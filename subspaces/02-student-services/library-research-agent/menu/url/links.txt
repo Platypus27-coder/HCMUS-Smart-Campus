@@ -1,0 +1,9 @@
+Thu vien HCMUS: https://lib.hcmus.edu.vn
+Thu vien Trung tam DHQG-HCM: https://vnulib.edu.vn
+Cong EZproxy Truy cap tu xa: https://ezproxy.vnulib.edu.vn
+DSpace Luan van DHQG: https://dspace.vnulib.edu.vn
+IEEE Xplore: https://ieeexplore.ieee.org
+ScienceDirect: https://sciencedirect.com
+SpringerLink: https://link.springer.com
+Web of Science: https://webofscience.com
+Zotero: https://zotero.org
