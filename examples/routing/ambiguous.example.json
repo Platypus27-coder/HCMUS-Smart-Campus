@@ -1,0 +1,8 @@
+{
+  "demo_notice": "DEMO DATA — deterministic routing test only.",
+  "user_request": "Tôi cần xem kỳ tới.",
+  "detected_intents": ["upcoming_term"],
+  "signals": ["kỳ tới"],
+  "available_context": [],
+  "expected_needs_clarification": true
+}

@@ -312,6 +312,12 @@ shared/agent-relationships.yaml
     Source-of-truth relationship graph: when an agent should use another agent,
     minimum context it may send, prohibited fields, and expected output.
 
+shared/routing-rules.yaml
+    Hard/soft candidate-generation rules for a future Router.
+
+shared/routing-score-criteria.yaml
+    Baseline deterministic scoring, thresholds, penalties, and ambiguity policy.
+
 <agent>/agent/related-agents.yaml
     Generated local view of only that agent's outgoing relationships.
 
@@ -323,6 +329,9 @@ shared/user-profile.schema.json
 
 shared/user-memory-policy.md
     Rules for handling user context and sharing it safely.
+
+AGENT_FOR_REPO.md
+    Tool-neutral working rules for Codex, Claude Code, Cursor, Copilot, and other coding agents.
 ```
 
 Generate local relationship views after editing the source-of-truth graph:
@@ -335,6 +344,9 @@ Validate source metadata and generated files:
 
 ```bash
 python scripts/validate_agent_graph.py
+python scripts/validate_routing_rules.py
+python scripts/validate_user_schema.py
+python scripts/simulate_routing.py examples/routing/single-intent.example.json
 python -m unittest discover -s tests
 ```
 

@@ -84,6 +84,10 @@ def validate_metadata(directory_path: Path, relationships_path: Path) -> tuple[l
     graph = relationship_data.get("relationships")
     if not isinstance(graph, dict):
         return errors + ["agent-relationships.yaml: 'relationships' must be a mapping"], 0
+    declared_types = relationship_data.get("allowed_relationship_types", sorted(ALLOWED_RELATIONSHIPS))
+    if not isinstance(declared_types, list) or set(declared_types) != ALLOWED_RELATIONSHIPS:
+        errors.append("agent-relationships.yaml: allowed_relationship_types must list the supported relationship types exactly once")
+    allowed_types = set(declared_types) if isinstance(declared_types, list) else ALLOWED_RELATIONSHIPS
 
     relationship_count = 0
     for source, edges in graph.items():
@@ -104,7 +108,7 @@ def validate_metadata(directory_path: Path, relationships_path: Path) -> tuple[l
             if source == target:
                 errors.append(f"{label}: self relationships are not allowed")
             relation_type = edge.get("relationship")
-            if relation_type not in ALLOWED_RELATIONSHIPS:
+            if relation_type not in allowed_types:
                 errors.append(f"{label}: invalid relationship type: {relation_type}")
             for field in ("triggers", "expected_output", "send", "do_not_send"):
                 value = edge.get(field)

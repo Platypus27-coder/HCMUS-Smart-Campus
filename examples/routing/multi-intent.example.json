@@ -1,0 +1,8 @@
+{
+  "demo_notice": "DEMO DATA — deterministic routing test only.",
+  "user_request": "GPA của tôi 3.25 có đủ học bổng không? Nếu chưa đủ, giúp tôi lập kế hoạch học kỳ tới.",
+  "detected_intents": ["scholarship_eligibility", "gpa_evaluation", "academic_planning"],
+  "signals": ["học bổng", "GPA", "học kỳ tới"],
+  "available_context": ["current_gpa", "earned_credits", "major"],
+  "expected_primary_agents": ["scholarship-matching-agent", "gpa-academic-standing-agent", "academic-advisor-agent"]
+}

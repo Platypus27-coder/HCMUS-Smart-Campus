@@ -1,4 +1,5 @@
 {
+  "demo_notice": "DEMO DATA — NOT A REAL STUDENT PROFILE.",
   "user_id": "example-user",
   "profile": {
     "academic": {
@@ -14,6 +15,11 @@
       "language": "vi",
       "response_style": "detailed"
     },
+    "interests": {
+      "research_topics": [],
+      "club_interests": [],
+      "career_interests": []
+    },
     "current_goals": [
       "evaluate scholarship eligibility",
       "plan next semester"
@@ -22,6 +28,6 @@
   "metadata": {
     "user_confirmed": true,
     "consent_to_store": false,
-    "last_updated": "2026-01-01T00:00:00Z"
+    "last_updated": "EXAMPLE_ONLY"
   }
 }

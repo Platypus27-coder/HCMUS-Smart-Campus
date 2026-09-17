@@ -1,0 +1,131 @@
+# Canonical request-dependent routing policy. This is metadata, not a production classifier.
+version: "1.0"
+hard_rules:
+  - id: prohibit_fake_sis_access
+    description: "No routing result may claim SIS, grade-portal, or private-record access."
+    condition:
+      unavailable_capabilities: [sis_access, automatic_private_grade_access, private_student_record_access]
+    action: prohibit_capability_claim
+  - id: unknown_data_remains_unknown
+    description: "Missing user context must not be fabricated or converted to a default value."
+    action: require_missing_information_handling
+  - id: minimum_context_only
+    description: "A handoff may include only relationship-approved, task-relevant context."
+    action: filter_context_before_handoff
+
+soft_rules:
+  - id: schedule_deadline
+    description: "Route public schedule and deadline questions to Schedule & Deadline Agent."
+    positive_intents: [schedule_deadline, upcoming_term]
+    positive_signals: ["lịch học", "lịch thi", "deadline", "hạn chót", "thời khóa biểu", "kỳ tới"]
+    required_capabilities: [find_public_schedule_information]
+    context_fields: [academic_year, campus, date_range]
+    preferred_agents: [schedule-deadline-agent]
+    multi_intent_allowed: true
+  - id: gpa_calculation
+    description: "Route GPA calculation, projection, and academic-standing questions to GPA Agent."
+    positive_intents: [calculate_gpa, projected_gpa, academic_standing, gpa_evaluation]
+    positive_signals: ["GPA", "điểm trung bình", "tín chỉ", "học vụ"]
+    required_capabilities: [calculate_gpa]
+    context_fields: [current_gpa, earned_credits, course_grades, expected_grades]
+    preferred_agents: [gpa-academic-standing-agent]
+    multi_intent_allowed: true
+  - id: academic_planning
+    description: "Route study-progress and semester-plan requests to Academic Advisor Agent."
+    positive_intents: [academic_planning, upcoming_term]
+    positive_signals: ["lộ trình học", "môn tiên quyết", "học kỳ tới", "kỳ tới", "kế hoạch học"]
+    required_capabilities: [recommend_semester_plan]
+    context_fields: [major, academic_year, completed_courses, planned_courses]
+    preferred_agents: [academic-advisor-agent]
+    multi_intent_allowed: true
+  - id: scholarship_eligibility
+    description: "Route scholarship discovery and eligibility analysis to Scholarship Matching Agent."
+    positive_intents: [find_scholarship, scholarship_eligibility, scholarship_requirements]
+    positive_signals: ["học bổng", "scholarship", "đủ điều kiện", "eligibility"]
+    required_capabilities: [screen_scholarship_eligibility]
+    context_fields: [major, academic_year, current_gpa, earned_credits, training_score]
+    preferred_agents: [scholarship-matching-agent]
+    related_intents:
+      gpa_evaluation:
+        supporting_agents: [gpa-academic-standing-agent]
+    multi_intent_allowed: true
+  - id: library_research
+    description: "Route library discovery, citation, and academic resource-search questions to Library Research Agent."
+    positive_intents: [library_search, resource_search, citation_guidance]
+    positive_signals: ["thư viện", "tài liệu", "trích dẫn", "IEEE", "bài báo"]
+    required_capabilities: [design_search_strategy]
+    context_fields: [research_topic, course_names, keywords, citation_style]
+    preferred_agents: [library-research-agent]
+    multi_intent_allowed: true
+  - id: clubs_activities
+    description: "Route club, activity, and participation questions to Clubs & Activities Agent."
+    positive_intents: [clubs_activities, activity_guidance]
+    positive_signals: ["CLB", "câu lạc bộ", "hoạt động", "Đoàn Hội"]
+    required_capabilities: [recommend_activity_types]
+    context_fields: [club_interests, career_interests, availability, activity_goals]
+    preferred_agents: [clubs-activities-agent]
+    multi_intent_allowed: true
+  - id: administrative_procedure
+    description: "Route document and administrative-process questions to Administrative Procedure Agent."
+    positive_intents: [administrative_procedure, document_checklist]
+    positive_signals: ["thủ tục", "biểu mẫu", "giấy xác nhận", "hồ sơ", "một cửa"]
+    required_capabilities: [explain_procedure]
+    context_fields: [procedure_type, purpose, available_documents]
+    preferred_agents: [administrative-procedure-agent]
+    multi_intent_allowed: true
+  - id: regulation_question
+    description: "Route verified regulation questions to Regulation Q&A Agent."
+    positive_intents: [regulation_question]
+    positive_signals: ["quy chế", "quy định", "nội quy", "kỷ luật"]
+    required_capabilities: [explain_regulation]
+    context_fields: [question, regulation_topic, situation_summary]
+    preferred_agents: [regulation-qa-agent]
+    multi_intent_allowed: true
+  - id: department_contact
+    description: "Route public contact and responsible-unit questions to Department Contact Agent."
+    positive_intents: [department_contact]
+    positive_signals: ["liên hệ", "phòng ban", "hotline", "địa chỉ"]
+    required_capabilities: [identify_responsible_unit]
+    context_fields: [request_topic, procedure_type, campus]
+    preferred_agents: [department-contact-agent]
+    multi_intent_allowed: true
+  - id: teaching_material
+    description: "Route teaching-material drafting questions to Teaching Material Assistant."
+    positive_intents: [teaching_material]
+    positive_signals: ["học liệu", "đề cương", "bài tập", "giảng dạy"]
+    required_capabilities: [draft_learning_material]
+    context_fields: [subject_area, learning_objectives, learner_level, material_type]
+    preferred_agents: [teaching-material-assistant]
+    multi_intent_allowed: true
+  - id: research_support
+    description: "Route research-planning and methodology questions to Research Assistant Agent."
+    positive_intents: [research_support]
+    positive_signals: ["nghiên cứu", "phương pháp", "đề tài", "khóa luận"]
+    required_capabilities: [refine_research_question]
+    context_fields: [research_topic, research_question, methodology_needs, keywords]
+    preferred_agents: [research-assistant-agent]
+    multi_intent_allowed: true
+  - id: class_support
+    description: "Route non-private class communication and FAQ questions to Class Support Agent."
+    positive_intents: [class_support]
+    positive_signals: ["lớp học", "thông báo", "FAQ", "bài tập"]
+    required_capabilities: [organize_class_faq]
+    context_fields: [class_topic, announcement_content, task_list]
+    preferred_agents: [class-support-agent]
+    multi_intent_allowed: true
+  - id: wellbeing
+    description: "Route non-clinical wellbeing questions to Student Well-being Agent."
+    positive_intents: [wellbeing]
+    positive_signals: ["stress", "wellbeing", "căng thẳng", "tâm lý"]
+    required_capabilities: [provide_self_care_guidance]
+    context_fields: [wellbeing_goal, situation_summary, preferred_support_style]
+    preferred_agents: [student-wellbeing-agent]
+    multi_intent_allowed: false
+  - id: soft_skills
+    description: "Route communication, presentation, and practice requests to Soft Skills Coach Agent."
+    positive_intents: [soft_skills]
+    positive_signals: ["kỹ năng mềm", "thuyết trình", "giao tiếp", "phỏng vấn"]
+    required_capabilities: [coach_communication]
+    context_fields: [skill_goal, career_interests, current_challenges, practice_context]
+    preferred_agents: [soft-skills-coach-agent]
+    multi_intent_allowed: true

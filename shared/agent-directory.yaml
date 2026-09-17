@@ -6,9 +6,11 @@ agents:
     name: "Schedule & Deadline Agent"
     subspace: "01-academic-training"
     role: "Guides users to public schedules, deadlines, and information that should be verified with the responsible unit."
+    responsibilities: [guide_public_schedule_lookup, identify_deadline_questions, recommend_official_verification]
     capabilities: [find_public_schedule_information, identify_deadline_questions, recommend_verification]
     accepts: [request_topic, academic_year, campus, date_range]
     returns: [schedule_guidance, deadline_checklist, verification_recommendation]
+    out_of_scope: [calculate_gpa, scholarship_matching, private_calendar_access]
     limitations: [no_realtime_schedule_access, no_internal_calendar_access, verified_sources_required]
     keywords: ["lịch học", "lịch thi", "deadline", "hạn chót", "thời khóa biểu"]
 
@@ -16,9 +18,11 @@ agents:
     name: "GPA & Academic Standing Agent"
     subspace: "01-academic-training"
     role: "Calculates user-provided GPA data, simulates future outcomes, and explains academic-standing considerations."
+    responsibilities: [calculate_gpa, simulate_future_gpa, explain_academic_standing]
     capabilities: [calculate_gpa, simulate_future_gpa, assess_academic_standing]
     accepts: [current_gpa, earned_credits, course_grades, planned_courses, expected_grades]
     returns: [calculated_gpa, projected_gpa, academic_status]
+    out_of_scope: [scholarship_search, library_document_search, private_grade_access]
     limitations: [no_sis_access, no_automatic_grade_access, calculations_require_user_provided_data]
     keywords: ["GPA", "điểm trung bình", "tín chỉ", "học vụ"]
 
@@ -26,9 +30,11 @@ agents:
     name: "Academic Advisor Agent"
     subspace: "01-academic-training"
     role: "Helps review study progress and draft a tentative learning plan from verified programme information and user-provided progress."
+    responsibilities: [review_progress, analyze_prerequisite_context, recommend_semester_plan]
     capabilities: [review_study_progress, analyze_prerequisite_context, recommend_semester_plan]
     accepts: [major, academic_year, completed_courses, planned_courses, current_gpa, learning_goals]
     returns: [progress_summary, tentative_study_plan, risk_notes]
+    out_of_scope: [official_enrollment_decision, private_student_record_access]
     limitations: [no_official_advising_authority, verified_curriculum_required, no_student_record_access]
     keywords: ["lộ trình học", "môn tiên quyết", "đăng ký môn", "tốt nghiệp"]
 
@@ -36,9 +42,11 @@ agents:
     name: "Scholarship Matching Agent"
     subspace: "02-student-services"
     role: "Matches a user-provided profile against verified scholarship knowledge and identifies gaps and next actions."
+    responsibilities: [screen_eligibility, rank_verified_opportunities, identify_application_gaps]
     capabilities: [screen_scholarship_eligibility, rank_verified_opportunities, identify_missing_requirements]
     accepts: [major, academic_year, current_gpa, earned_credits, training_score, eligibility_context]
     returns: [match_summary, missing_requirements, next_actions]
+    out_of_scope: [gpa_calculation, award_decision, financial_record_access]
     limitations: [no_unverified_scholarship_claims, no_financial_record_access, verified_sources_required]
     keywords: ["học bổng", "điều kiện", "GPA", "hồ sơ", "hạn nộp"]
 
@@ -46,9 +54,11 @@ agents:
     name: "Library Research Agent"
     subspace: "02-student-services"
     role: "Guides search strategy, academic resource discovery, citation management, and public library services."
+    responsibilities: [design_search_strategy, guide_resource_discovery, explain_citation_workflows]
     capabilities: [design_search_strategy, generate_keywords, recommend_resource_types, explain_citation_workflows]
     accepts: [research_topic, course_names, keywords, preferred_databases, citation_style]
     returns: [search_strategy, suggested_keywords, resource_guidance, citation_guidance]
+    out_of_scope: [private_library_account_access, research_ethics_approval]
     limitations: [no_private_library_account_access, no_guaranteed_resource_availability, verified_sources_required]
     keywords: ["thư viện", "IEEE", "tài liệu", "trích dẫn", "tìm bài báo"]
 
@@ -56,9 +66,11 @@ agents:
     name: "Clubs & Activities Agent"
     subspace: "02-student-services"
     role: "Helps explore student clubs, activities, and verified participation-related guidance."
+    responsibilities: [recommend_activity_types, map_interests_to_clubs, explain_participation_steps]
     capabilities: [recommend_activity_types, map_interests_to_clubs, explain_participation_steps]
     accepts: [club_interests, career_interests, availability, activity_goals]
     returns: [activity_recommendations, participation_guidance, verification_recommendation]
+    out_of_scope: [event_registration, real_time_event_confirmation]
     limitations: [no_realtime_event_access, no_unverified_activity_claims, verified_sources_required]
     keywords: ["câu lạc bộ", "CLB", "hoạt động", "điểm rèn luyện", "Đoàn Hội"]
 
@@ -66,9 +78,11 @@ agents:
     name: "Administrative Procedure Agent"
     subspace: "03-administration-one-stop"
     role: "Explains verified administrative procedures, required documents, and preparation steps."
+    responsibilities: [explain_procedure, prepare_document_checklist, identify_submission_steps]
     capabilities: [explain_procedure, prepare_document_checklist, identify_submission_steps]
     accepts: [procedure_type, purpose, deadline_context, available_documents]
     returns: [procedure_guidance, document_checklist, next_actions]
+    out_of_scope: [submit_documents, access_private_case_status]
     limitations: [no_submission_authority, no_internal_case_access, verified_sources_required]
     keywords: ["thủ tục", "giấy xác nhận", "biểu mẫu", "một cửa", "hồ sơ"]
 
@@ -76,9 +90,11 @@ agents:
     name: "Regulation Q&A Agent"
     subspace: "03-administration-one-stop"
     role: "Answers questions about verified regulations and highlights when an official interpretation is needed."
+    responsibilities: [explain_regulation, identify_applicable_rule, recommend_official_verification]
     capabilities: [explain_regulation, identify_applicable_rule, recommend_official_verification]
     accepts: [question, regulation_topic, situation_summary]
     returns: [regulation_guidance, source_requirements, verification_recommendation]
+    out_of_scope: [official_legal_interpretation, policy_enforcement]
     limitations: [no_legal_or_official_interpretation, no_unverified_policy_claims, verified_sources_required]
     keywords: ["quy chế", "quy định", "nội quy", "kỷ luật", "quyền lợi"]
 
@@ -86,9 +102,11 @@ agents:
     name: "Department Contact Agent"
     subspace: "03-administration-one-stop"
     role: "Directs users to the appropriate university unit using verified public contact information."
+    responsibilities: [identify_responsible_unit, provide_verified_contact_guidance, recommend_follow_up]
     capabilities: [identify_responsible_unit, provide_verified_contact_guidance, recommend_follow_up]
     accepts: [request_topic, procedure_type, campus, preferred_contact_channel]
     returns: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+    out_of_scope: [private_directory_access, contact_detail_invention]
     limitations: [no_unverified_contact_details, no_internal_directory_access, verified_sources_required]
     keywords: ["liên hệ", "phòng ban", "khoa", "hotline", "địa chỉ"]
 
@@ -96,9 +114,11 @@ agents:
     name: "Teaching Material Assistant"
     subspace: "04-teaching-research"
     role: "Supports drafting teaching materials and learning activities while preserving academic integrity."
+    responsibilities: [draft_material_outline, suggest_activity_structure, preserve_academic_integrity]
     capabilities: [draft_learning_material, suggest_exercise_structure, align_material_to_learning_goals]
     accepts: [subject_area, learning_objectives, learner_level, material_type]
     returns: [material_outline, activity_suggestions, academic_integrity_notes]
+    out_of_scope: [official_curriculum_approval, assessment_impersonation]
     limitations: [no_claimed_official_curriculum_access, no_assessment_impersonation, human_review_required]
     keywords: ["học liệu", "đề cương", "bài tập", "giảng dạy", "rubric"]
 
@@ -106,9 +126,11 @@ agents:
     name: "Research Assistant Agent"
     subspace: "04-teaching-research"
     role: "Supports research planning, methodology exploration, keyword refinement, and ethical citation practices."
+    responsibilities: [refine_research_question, explain_methodology_options, support_citation_planning]
     capabilities: [refine_research_question, propose_search_terms, explain_methodology_options, support_citation_planning]
     accepts: [research_topic, research_question, methodology_needs, keywords, discipline]
     returns: [research_plan_guidance, keyword_suggestions, methodology_guidance, limitations]
+    out_of_scope: [fabricate_sources, grant_research_ethics_approval]
     limitations: [no_fabricated_sources, no_research_ethics_approval, human_supervision_required]
     keywords: ["nghiên cứu", "phương pháp", "đề tài", "khóa luận", "literature review"]
 
@@ -116,9 +138,11 @@ agents:
     name: "Class Support Agent"
     subspace: "04-teaching-research"
     role: "Supports class communication, frequently asked questions, and organization of non-private class information."
+    responsibilities: [draft_class_announcement, organize_class_faq, summarize_class_tasks]
     capabilities: [draft_class_announcement, organize_class_faq, summarize_class_tasks]
     accepts: [class_topic, announcement_content, task_list, public_schedule_context]
     returns: [announcement_draft, faq_summary, task_summary]
+    out_of_scope: [private_roster_access, grade_access, lms_administration]
     limitations: [no_private_class_roster_access, no_grade_access, no_realtime_lms_access]
     keywords: ["lớp học", "thông báo", "FAQ", "bài tập", "môn học"]
 
@@ -126,9 +150,11 @@ agents:
     name: "Student Well-being Agent"
     subspace: "05-student-life-development"
     role: "Offers non-clinical wellbeing support, self-care guidance, and appropriate escalation guidance."
+    responsibilities: [provide_self_care_guidance, identify_support_options, encourage_appropriate_escalation]
     capabilities: [provide_self_care_guidance, identify_support_options, encourage_appropriate_escalation]
     accepts: [wellbeing_goal, situation_summary, preferred_support_style]
     returns: [supportive_guidance, suggested_next_steps, safety_notice]
+    out_of_scope: [clinical_diagnosis, emergency_service_replacement, health_record_access]
     limitations: [no_diagnosis, no_emergency_service_replacement, no_health_record_access]
     keywords: ["sức khỏe tinh thần", "stress", "wellbeing", "căng thẳng", "tâm lý"]
 
@@ -136,9 +162,11 @@ agents:
     name: "Soft Skills Coach Agent"
     subspace: "05-student-life-development"
     role: "Helps users practice communication, presentation, collaboration, and career-readiness skills."
+    responsibilities: [coach_communication, practice_presentation, suggest_skill_development_plan]
     capabilities: [coach_communication, practice_presentation, suggest_skill_development_plan]
     accepts: [skill_goal, career_interests, current_challenges, practice_context]
     returns: [practice_plan, feedback_framework, next_steps]
+    out_of_scope: [employment_guarantee, private_employer_data_access]
     limitations: [no_guaranteed_employment_outcome, no_private_employer_data, user_practice_required]
     keywords: ["kỹ năng mềm", "thuyết trình", "giao tiếp", "phỏng vấn", "nghề nghiệp"]
 
@@ -146,9 +174,11 @@ agents:
     name: "Campus Router Agent"
     subspace: "06-central-orchestration"
     role: "Identifies user intent, selects relevant agents, and creates minimum-context handoff envelopes."
+    responsibilities: [detect_intent, select_agents, filter_context, prepare_handoff_envelopes]
     capabilities: [detect_intent, decompose_multi_intent_request, select_agents, prepare_handoff_context]
     accepts: [user_request, available_user_context, agent_directory, relationship_graph]
     returns: [routing_plan, handoff_envelopes, missing_information]
+    out_of_scope: [specialist_fact_invention, runtime_execution_guarantee]
     limitations: [no_specialist_fact_invention, no_full_profile_forwarding, no_runtime_execution_guarantee]
     keywords: ["bắt đầu", "giúp tôi", "tôi cần", "nhiều yêu cầu", "điều phối"]
 
@@ -156,8 +186,10 @@ agents:
     name: "Campus Aggregator Agent"
     subspace: "06-central-orchestration"
     role: "Combines structured specialist outputs into a coherent response and action plan while preserving limitations and provenance."
+    responsibilities: [merge_specialist_outputs, identify_conflicts, produce_action_plan, preserve_provenance]
     capabilities: [merge_specialist_outputs, identify_conflicts, produce_action_plan, preserve_provenance]
     accepts: [routing_plan, specialist_responses, user_request]
     returns: [unified_response, action_plan, assumptions, limitations]
+    out_of_scope: [specialist_fact_invention, source_removal, runtime_execution_guarantee]
     limitations: [no_specialist_fact_invention, no_runtime_execution_guarantee, preserve_source_limits]
     keywords: ["tổng hợp", "kế hoạch hành động", "kết quả", "toàn diện", "điều phối"]

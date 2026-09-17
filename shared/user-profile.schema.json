@@ -6,6 +6,7 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "demo_notice": { "type": ["string", "null"], "description": "Reserved for explicitly labelled example data; omit from real runtime profiles." },
     "user_id": { "type": ["string", "null"], "description": "Pseudonymous runtime identifier when available." },
     "profile": {
       "type": "object",
@@ -56,7 +57,7 @@
       "additionalProperties": false,
       "properties": {
         "user_confirmed": { "type": ["boolean", "null"] },
-        "last_updated": { "type": ["string", "null"], "format": "date-time" },
+        "last_updated": { "oneOf": [{ "type": "string", "format": "date-time" }, { "const": "EXAMPLE_ONLY" }, { "type": "null" }] },
         "consent_to_store": { "type": ["boolean", "null"] }
       }
     }

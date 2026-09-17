@@ -7,6 +7,30 @@
 
 This protocol lets a future orchestration runtime exchange structured work between agents without giving every specialist global knowledge of the 16-agent system. The authoritative relationship graph is [`agent-relationships.yaml`](agent-relationships.yaml). A specialist consults only its generated `agent/related-agents.yaml`; the Router and Aggregator may consult the global directory and graph.
 
+Routing is a separate concern: `routing-rules.yaml` generates candidates, `routing-score-criteria.yaml` evaluates the baseline deterministic heuristic, and hard rules always run before scoring. A score never overrides a safety or architecture rule.
+
+## Routing result contract
+
+Before preparing handoffs, a future Router should produce an internal result in this shape. `primary_agents` is an array because a genuine multi-intent request can have more than one primary domain.
+
+```json
+{
+  "routing_version": "1.0",
+  "detected_intents": ["scholarship_eligibility", "gpa_evaluation"],
+  "primary_agents": [
+    {"id": "scholarship-matching-agent", "score": 0.94, "reason": "Primary scholarship intent"}
+  ],
+  "supporting_agents": [
+    {"id": "gpa-academic-standing-agent", "score": 0.81, "reason": "GPA validation required"}
+  ],
+  "discarded_agents": [],
+  "needs_clarification": false,
+  "clarification_reason": null
+}
+```
+
+The conceptual decision order is: hard-rule evaluation → candidate generation → soft-rule matching → scoring → threshold evaluation → ambiguity evaluation → single/multi-agent decision → context filtering → handoff. If the best two single-intent candidates are closer than the configured ambiguity margin, request clarification unless separate intents clearly justify multi-agent routing.
+
 ## When to hand off
 
 A handoff is appropriate when one of these conditions is true:

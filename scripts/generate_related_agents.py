@@ -13,7 +13,8 @@ DIRECTORY_PATH = ROOT / "shared" / "agent-directory.yaml"
 RELATIONSHIPS_PATH = ROOT / "shared" / "agent-relationships.yaml"
 HEADER = """# AUTO-GENERATED FILE
 # Source: shared/agent-relationships.yaml
-# Do not manually edit unless you also update the source relationship map.
+# Do not manually edit.
+# Update the canonical relationship graph and regenerate instead.
 """
 
 

@@ -1,6 +1,7 @@
 # Source-of-truth relationship graph. Keys are source agent IDs.
 # Only context needed by the target task may be included in a handoff.
 version: "1.0"
+allowed_relationship_types: [requests_validation_from, provides_data_to, collaborates_with, refers_to, supports]
 relationships:
   scholarship-matching-agent:
     - target: gpa-academic-standing-agent

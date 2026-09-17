@@ -1,0 +1,8 @@
+{
+  "demo_notice": "DEMO DATA — deterministic routing test only.",
+  "user_request": "Tính GPA cho tôi",
+  "detected_intents": ["calculate_gpa"],
+  "signals": ["GPA"],
+  "available_context": [],
+  "expected_primary_agents": ["gpa-academic-standing-agent"]
+}

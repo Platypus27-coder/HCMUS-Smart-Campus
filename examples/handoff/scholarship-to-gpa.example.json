@@ -1,0 +1,19 @@
+{
+  "demo_notice": "DEMO DATA — NOT A REAL STUDENT PROFILE.",
+  "handoff_version": "1.0",
+  "from": "scholarship-matching-agent",
+  "to": "gpa-academic-standing-agent",
+  "reason": "Need a GPA projection to assess a scholarship requirement from a verified source.",
+  "user_request": "Tôi muốn biết GPA kỳ tới có thể đáp ứng điều kiện học bổng hay không.",
+  "context": {
+    "current_gpa": 3.25,
+    "earned_credits": 65,
+    "planned_courses": ["DEMO_PLACEHOLDER"],
+    "expected_grades": ["DEMO_PLACEHOLDER"]
+  },
+  "task": {
+    "instruction": "Calculate or project GPA using only the provided academic values."
+  },
+  "expected_output": ["calculated_gpa", "projected_gpa", "academic_status"],
+  "constraints": ["Use only user-provided academic data.", "Do not assume SIS access.", "Do not infer missing grade details."]
+}

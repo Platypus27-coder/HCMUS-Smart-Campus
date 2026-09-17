@@ -1,0 +1,26 @@
+# Baseline heuristic for prototype evaluation; weights are not claimed to be mathematically optimal.
+version: "1.0"
+score_range: {min: 0.0, max: 1.0}
+weights:
+  intent_match: 0.35
+  capability_match: 0.25
+  semantic_signal_match: 0.10
+  context_match: 0.10
+  relationship_relevance: 0.10
+  input_availability: 0.10
+penalties:
+  out_of_scope: {value: 0.40}
+  missing_required_capability: {value: 0.50}
+  unsupported_data_requirement: {value: 0.30}
+  unnecessary_sensitive_context: {value: 0.20}
+thresholds:
+  primary_agent: {min_score: 0.80}
+  supporting_agent: {min_score: 0.65}
+  ambiguous: {min_score: 0.45}
+  reject_below: 0.45
+ambiguity:
+  minimum_primary_margin: 0.10
+multi_intent:
+  enabled: true
+  allow_multiple_primary_domains: true
+formula: "Score = weighted positive components - penalties; clamp to score_range. Every positive component is normalized to [0, 1]."
