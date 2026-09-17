@@ -1,0 +1,57 @@
+{
+  "space_id": "schedule-deadline-agent",
+  "name": "Schedule & Deadline Hub (Trợ lý Lịch trình & Hạn chót)",
+  "subspace": "01-academic-training",
+  "version": "2.0.0",
+  "theme": "navy-academic",
+  "avatar": "agent/background.png",
+  "description": "Trợ lý ảo chuyên sâu hỗ trợ tra cứu kế hoạch năm học 2025-2026, thời khóa biểu, lịch thi, hạn chót đóng học phí, lịch đăng ký học phần và các mốc học vụ quan trọng của Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
+  "welcome_message": "Xin chào bạn! Mình là **Schedule & Deadline Agent** thuộc Hệ sinh thái HCMUS Smart Campus. 🎓⏰\n\nMình luôn sẵn sàng hỗ trợ bạn theo dõi và nhắc nhở toàn bộ các mốc thời gian học vụ:\n• 📅 Kế hoạch năm học 2025 - 2026 (HK1, HK2, HK Hè)\n• 📝 Lịch thi giữa kỳ & thi kết thúc học phần\n• 🔄 Thời gian đăng ký học phần Đợt 1, Đợt 2 & rút môn\n• 💳 Hạn chót đóng học phí để không bị hủy môn\n• 🧧 Lịch nghỉ Tết Nguyên Đán và các ngày nghỉ lễ\n\nBạn cần tra cứu lịch trình hoặc đặt nhắc nhở deadline nào hôm nay?",
+  "conversation_starters": [
+    {
+      "label": "📅 Kế hoạch năm học 2025-2026",
+      "prompt": "Cho mình xin toàn bộ các mốc thời gian quan trọng trong Kế hoạch năm học 2025-2026 của HCMUS?"
+    },
+    {
+      "label": "💳 Hạn chót đóng học phí HK1 & HK2",
+      "prompt": "Hạn chót đóng học phí Học kỳ 1 và Học kỳ 2 là ngày nào? Nếu đóng trễ có bị hủy môn không?"
+    },
+    {
+      "label": "📝 Lịch thi giữa kỳ & cuối kỳ",
+      "prompt": "Thời gian thi giữa kỳ và thi kết thúc học phần của HK1 và HK2 diễn ra vào những tuần nào?"
+    },
+    {
+      "label": "🔄 Lịch đăng ký học phần",
+      "prompt": "Khi nào bắt đầu Đăng ký học phần Đợt 1 và Đợt 2 hiệu chỉnh cho học kỳ sắp tới?"
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/HCMUS_Academic_Calendar_2025_2026.xlsx",
+      "menu/file/HCMUS_Weekly_Timetable_Template.xlsx",
+      "menu/file/Huong_Dan_Lich_Trinh_Deadline_HCMUS.docx"
+    ],
+    "links": [
+      {
+        "title": "Portal HCMUS (TKB & Lịch thi)",
+        "url": "https://portal.hcmus.edu.vn"
+      },
+      {
+        "title": "Phòng Đào tạo HCMUS",
+        "url": "https://pdt.hcmus.edu.vn"
+      },
+      {
+        "title": "Phòng Khảo thí & ĐBCL",
+        "url": "https://khaothi.hcmus.edu.vn"
+      },
+      {
+        "title": "Phòng Kế hoạch Tài chính",
+        "url": "https://khtc.hcmus.edu.vn"
+      }
+    ],
+    "infographics": [
+      "menu/pic/academic_year_timeline.png",
+      "menu/pic/course_registration_flowchart.png"
+    ]
+  }
+}
