@@ -1,0 +1,58 @@
+{
+  "space_id": "library-research-agent",
+  "name": "Library & Research Discovery Hub (Thư viện & Nghiên cứu Khoa học)",
+  "subspace": "02-student-services",
+  "version": "2.0.0",
+  "theme": "academic-cyan",
+  "avatar": "agent/background.png",
+  "description": "Trợ lý ảo học thuật chuyên sâu hướng dẫn khai thác Thư viện HCMUS, Thư viện Trung tâm ĐHQG-HCM, hơn 15+ cơ sở dữ liệu số quốc tế (IEEE, ScienceDirect, SpringerLink...), kết nối EZproxy truy cập từ xa, mượn trả sách, đặt phòng học nhóm, phần mềm trích dẫn và kiểm tra liêm chính Turnitin.",
+  "welcome_message": "Chào bạn! Mình là **Library & Research Discovery Agent** – Trợ lý Khai thác Thư viện & Nghiên cứu Khoa học tại HCMUS Smart Campus. 📚🔬\n\nMình luôn sẵn sàng đồng hành cùng bạn trong học tập và nghiên cứu học thuật:\n• 🌐 **CSDL Số Quốc Tế:** Hướng dẫn tìm kiếm và tải bài báo khoa học toàn văn từ IEEE Xplore, ScienceDirect, SpringerLink...\n• 🔑 **Truy Cập Từ Xa:** Chỉ dẫn kết nối cổng EZproxy Thư viện ĐHQG-HCM để đọc bài báo miễn phí tại nhà.\n• 📖 **Dịch Vụ Mượn - Trả:** Tra cứu vị trí sách, thời hạn mượn (14 ngày), thủ tục gia hạn online qua OPAC.\n• 👥 **Đặt Phòng Học Nhóm:** Quy trình đặt trước phòng học nhóm đa phương tiện Lầu 10 Nhà I (Smart TV, bảng kính).\n• 📑 **Trích Dẫn & Turnitin:** Hướng dẫn Zotero, Mendeley, chuẩn trích dẫn IEEE/APA và kiểm tra trùng lặp khóa luận.\n\nBạn đang cần tìm tài liệu cho môn học nào hay cần hỗ trợ đề tài nghiên cứu hôm nay?",
+  "conversation_starters": [
+    {
+      "label": "🌐 Tải bài báo IEEE / ScienceDirect tại nhà",
+      "prompt": "Hướng dẫn em cách kết nối EZproxy của Thư viện ĐHQG-HCM để tải bài báo khoa học trên IEEE Xplore và ScienceDirect tại nhà miễn phí?"
+    },
+    {
+      "label": "📖 Mượn trả sách & Gia hạn Online",
+      "prompt": "Quy định mượn sách thư viện mang về nhà được mấy cuốn, trong bao lâu và làm thế nào để gia hạn online?"
+    },
+    {
+      "label": "👥 Đặt phòng học nhóm Lầu 10",
+      "prompt": "Thủ tục đăng ký mượn phòng học nhóm đa phương tiện tại Lầu 10 Nhà I Cơ sở 1 như thế nào?"
+    },
+    {
+      "label": "📑 Quản lý trích dẫn & Turnitin",
+      "prompt": "Hướng dẫn em cách sử dụng Zotero để quản lý tài liệu tham khảo theo chuẩn IEEE và quy định tỷ lệ trùng lặp Turnitin khi làm khóa luận?"
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/HCMUS_Electronic_Databases_Catalog_2025_2026.xlsx",
+      "menu/file/So_Tay_Huong_Dan_Khai_Thac_Thu_Vien_NCKH_HCMUS.docx",
+      "menu/file/Mau_Phieu_Dang_Ky_Muon_Sach_Dat_Phong_Hoc_Nhom.docx"
+    ],
+    "links": [
+      {
+        "title": "Thư viện HCMUS",
+        "url": "https://lib.hcmus.edu.vn"
+      },
+      {
+        "title": "Cổng EZproxy Truy cập từ xa",
+        "url": "https://ezproxy.vnulib.edu.vn"
+      },
+      {
+        "title": "IEEE Xplore Digital Library",
+        "url": "https://ieeexplore.ieee.org"
+      },
+      {
+        "title": "ScienceDirect (Elsevier)",
+        "url": "https://sciencedirect.com"
+      }
+    ],
+    "infographics": [
+      "menu/pic/library_service_floor_plan.png",
+      "menu/pic/database_access_workflow.png",
+      "menu/pic/research_search_strategy_matrix.png"
+    ]
+  }
+}
