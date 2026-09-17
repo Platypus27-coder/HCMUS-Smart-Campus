@@ -1,0 +1,58 @@
+{
+  "space_id": "gpa-academic-standing-agent",
+  "name": "GPA & Academic Standing Hub (Trợ lý Điểm số & Học vụ)",
+  "subspace": "01-academic-training",
+  "version": "2.0.0",
+  "theme": "navy-analytics",
+  "avatar": "agent/background.png",
+  "description": "Trợ lý ảo phân tích điểm số, tính GPA học kỳ theo danh sách môn học tự nhập, mô phỏng What-if nâng điểm tích lũy, cảnh báo học vụ và hướng dẫn quy chuẩn tốt nghiệp của Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
+  "welcome_message": "Chào bạn! Mình là **GPA & Academic Standing Agent** thuộc Hệ sinh thái HCMUS Smart Campus. 📊🎯\n\nMình có thể hỗ trợ bạn mọi vấn đề liên quan đến điểm số và học vụ:\n• 🧮 **Tính GPA học kỳ:** Bạn chỉ cần gửi danh sách môn, số TC và điểm (mình sẽ tự động lọc các môn GDQP, Thể dục, Anh văn).\n• 📈 **Mô phỏng What-if:** Dự báo GPA tích lũy sau kỳ tới hoặc tính điểm cần đạt để nâng lên hạng Giỏi / Xuất sắc.\n• ⚠️ **Kiểm tra rủi ro học vụ:** Đánh giá nguy cơ bị Cảnh báo học vụ (Trường hợp A < 7 TC hoặc Trường hợp B < 3.0).\n• 🏆 **Học bổng KKHT:** Tra cứu điều kiện GPA và Điểm rèn luyện để nộp học bổng Khuyến khích Học tập.\n• 🎓 **Điều kiện tốt nghiệp:** Kiểm tra 5 điều kiện bắt buộc và hạng bằng tốt nghiệp.\n\nBạn muốn tính điểm học kỳ hay mô phỏng kịch bản điểm nào hôm nay?",
+  "conversation_starters": [
+    {
+      "label": "🎯 Tính GPA học kỳ này",
+      "prompt": "Mình muốn tính GPA học kỳ: Giải tích 1 (4TC) 8.5, ĐSTT (4TC) 7.0, NMLT (4TC) 9.0, Triết (3TC) 8.0, Anh văn 1 (3TC) 8.5, Thể dục 1 (2TC) 9.0. Tính GPA giúp mình với?"
+    },
+    {
+      "label": "⚠️ Kiểm tra Cảnh báo học vụ",
+      "prompt": "Những trường hợp nào sinh viên bị cảnh báo học vụ cuối kỳ và mấy lần cảnh báo thì bị buộc thôi học?"
+    },
+    {
+      "label": "📈 Mô phỏng What-if nâng GPA",
+      "prompt": "Hiện mình có CGPA 3.15 với 65 tín chỉ. Kỳ tới học 18 tín chỉ thì cần đạt GPA kỳ bao nhiêu để CGPA lên 3.25 (hạng Giỏi)?"
+    },
+    {
+      "label": "🏆 Điều kiện xét Học bổng KKHT",
+      "prompt": "Điều kiện về GPA học kỳ và Điểm rèn luyện để được xét học bổng Khuyến khích Học tập loại Giỏi và Xuất sắc là gì?"
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/HCMUS_GPA_WhatIf_Calculator_Interactive.xlsx",
+      "menu/file/Bang_Tu_Danh_Gia_Diem_Ren_Luyen_100_Diem.xlsx",
+      "menu/file/Huong_Dan_Quy_Che_Diem_So_Hoc_Vu_HCMUS.docx"
+    ],
+    "links": [
+      {
+        "title": "Portal HCMUS (Xem Bảng Điểm)",
+        "url": "https://portal.hcmus.edu.vn"
+      },
+      {
+        "title": "Phòng Khảo thí (Phúc khảo bài thi)",
+        "url": "https://khaothi.hcmus.edu.vn"
+      },
+      {
+        "title": "Cổng Tra Cứu Điểm Rèn Luyện",
+        "url": "https://drl.hcmus.edu.vn"
+      },
+      {
+        "title": "Phòng Công tác Sinh viên",
+        "url": "https://ctsv.hcmus.edu.vn"
+      }
+    ],
+    "infographics": [
+      "menu/pic/score_conversion_infographic.png",
+      "menu/pic/academic_warning_flowchart.png",
+      "menu/pic/drl_criteria_breakdown.png"
+    ]
+  }
+}
