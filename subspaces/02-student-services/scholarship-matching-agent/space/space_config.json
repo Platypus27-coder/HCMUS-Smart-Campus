@@ -1,0 +1,55 @@
+{
+  "space_id": "scholarship-matching-agent",
+  "name": "Scholarship Matching Hub (Trung tâm Săn & Ghép nối Học bổng)",
+  "subspace": "02-student-services",
+  "is_flagship": true,
+  "version": "2.0.0",
+  "theme": "gold-academic",
+  "avatar": "agent/background.png",
+  "description": "Flagship Agent chuyên gia ghép nối học bổng thông minh, tra cứu học bổng Khuyến khích Học tập (KKHT), học bổng tài trợ doanh nghiệp (Vallet, Ting, POSCO, Pony Chung...), hướng dẫn chính sách Miễn giảm học phí Nghị định 81/2021 và trợ cấp xã hội tại Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
+  "welcome_message": "Xin chào bạn! Mình là **Scholarship Matching Agent** – Chuyên gia Săn & Ghép nối Học bổng tại Hệ sinh thái HCMUS Smart Campus. 🎓✨\n\nMình luôn sẵn sàng đồng hành hỗ trợ bạn tiếp cận tối đa các nguồn lực tài chính học đường:\n• 🔍 **Profile Matching:** Bạn chỉ cần nhập GPA, ĐRL, ngành học và hoàn cảnh, mình sẽ tìm ngay các học bổng phù hợp nhất!\n• 🏆 **Học bổng KKHT:** Tra cứu điều kiện GPA và Điểm rèn luyện để nhận học bổng Khá (100%), Giỏi, Xuất sắc (>=120% học phí).\n• 💼 **Học bổng Doanh nghiệp:** Hơn 25+ học bổng tài trợ uy tín (Vallet 25 triệu, Lawrence S. Ting, POSCO, Pony Chung, Hessen, Lotte...).\n• 📜 **Chính sách Miễn giảm Học phí:** Hướng dẫn đối tượng Miễn 100%, Giảm 70%, Giảm 50% học phí theo Nghị định 81/2021.\n• 📝 **Viết Motivation Letter:** Cung cấp dàn ý và mẫu thư nguyện vọng song ngữ Việt - Anh thuyết phục nhà tài trợ.\n\nHôm nay bạn muốn tìm học bổng nào hoặc kiểm tra điều kiện hồ sơ của mình?",
+  "conversation_starters": [
+    {
+      "label": "🔍 Ghép nối học bổng theo Profile",
+      "prompt": "Em là sinh viên năm 2 ngành CNTT, GPA 8.2, DRL 88, hoàn cảnh gia đình khó khăn. Có những học bổng nào phù hợp với em?"
+    },
+    {
+      "label": "🏆 Điều kiện Học bổng KKHT",
+      "prompt": "Điều kiện để nhận Học bổng Khuyến khích Học tập (loại Khá, Giỏi, Xuất sắc) tại HCMUS là gì và mức tiền thưởng là bao nhiêu?"
+    },
+    {
+      "label": "📜 Chính sách Miễn 100% Học phí",
+      "prompt": "Những đối tượng sinh viên nào được miễn 100% học phí theo Nghị định 81/2021 và hồ sơ nộp về trường gồm những gì?"
+    },
+    {
+      "label": "📝 Mẫu Thư nguyện vọng (Motivation Letter)",
+      "prompt": "Hướng dẫn em cách viết một bức Thư nguyện vọng (Motivation Letter) xin học bổng tài trợ doanh nghiệp thật ấn tượng?"
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/HCMUS_Scholarship_Matching_Database_2025_2026.xlsx",
+      "menu/file/Mau_Don_Mien_Giam_Hoc_Phi_Tro_Cap_XH_HCMUS.docx",
+      "menu/file/Mau_Thu_Nguyen_Vong_Xin_Hoc_Bong_Chuan_HCMUS.docx"
+    ],
+    "links": [
+      {
+        "title": "Cổng Học bổng P.CTSV",
+        "url": "https://ctsv.hcmus.edu.vn/hoc-bong"
+      },
+      {
+        "title": "Chính sách Miễn giảm HP NĐ 81",
+        "url": "https://ctsv.hcmus.edu.vn/chinh-sach-mien-giam"
+      },
+      {
+        "title": "Phòng Kế hoạch Tài chính",
+        "url": "https://khtc.hcmus.edu.vn"
+      }
+    ],
+    "infographics": [
+      "menu/pic/scholarship_matching_matrix.png",
+      "menu/pic/tuition_reduction_flowchart.png",
+      "menu/pic/annual_scholarship_timeline.png"
+    ]
+  }
+}
