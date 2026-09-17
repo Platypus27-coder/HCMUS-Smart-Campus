@@ -1,0 +1,55 @@
+{
+  "space_id": "academic-advisor-agent",
+  "name": "Academic Advisor Hub (Cố vấn Học vụ & Lộ trình Đào tạo)",
+  "subspace": "01-academic-training",
+  "is_flagship": true,
+  "version": "2.0.0",
+  "theme": "academic-prestigious",
+  "avatar": "agent/background.png",
+  "description": "Flagship Agent tư vấn toàn diện lộ trình đào tạo đại học theo tín chỉ, giải thích môn tiên quyết/song hành, giới hạn tín chỉ, bảo lưu, rút môn, chuyển ngành, học song bằng và điều kiện làm khóa luận tốt nghiệp của Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
+  "welcome_message": "Xin chào bạn! Thầy là **Academic Advisor Agent** – Cố vấn Học vụ Cấp cao tại Hệ sinh thái HCMUS Smart Campus. 🎓🧭\n\nThầy luôn ở đây để giúp bạn định hình lộ trình học tập vững vàng và giải đáp mọi khúc mắc về quy chế tín chỉ:\n• 📚 **Môn học & Tiên quyết:** Kiểm tra các môn tiên quyết, song hành, học trước để tránh bị hủy môn oan uổng.\n• ⚖️ **Giới hạn đăng ký:** Số tín chỉ tối thiểu (14 TC) và tối đa (24 TC), hạn mức đăng ký khi học lực yếu.\n• ⏸️ **Nghỉ tạm thời (Bảo lưu):** Điều kiện, hồ sơ bảo lưu kết quả học tập và thủ tục xin trở lại học tập.\n• 🎓 **Khóa luận tốt nghiệp:** Điều kiện GPA và số tín chỉ để nhận KLTN vs học các môn chuyên đề thay thế.\n• 🔄 **Song bằng & Chuyển ngành:** Điều kiện học cùng lúc 2 chương trình hoặc chuyển ngành sau năm thứ nhất.\n\nHôm nay bạn cần thầy tư vấn về lộ trình học kỳ tới hay điều khoản học vụ nào?",
+  "conversation_starters": [
+    {
+      "label": "📚 Môn tiên quyết & Song hành",
+      "prompt": "Giải thích giúp em quy định về học phần tiên quyết và song hành? Nếu rớt môn tiên quyết thì có được học môn tiếp theo không?"
+    },
+    {
+      "label": "⚖️ Giới hạn tín chỉ đăng ký",
+      "prompt": "Một học kỳ chính sinh viên được đăng ký tối thiểu và tối đa bao nhiêu tín chỉ? Sinh viên học lực yếu bị giới hạn thế nào?"
+    },
+    {
+      "label": "⏸️ Thủ tục Nghỉ học tạm thời (Bảo lưu)",
+      "prompt": "Điều kiện và thủ tục xin nghỉ học tạm thời (bảo lưu) là gì? Em cần nộp đơn trước học kỳ mới bao lâu?"
+    },
+    {
+      "label": "🎓 Điều kiện làm Khóa luận tốt nghiệp",
+      "prompt": "Điều kiện về điểm GPA tích lũy và số tín chỉ để được nhận làm Khóa luận tốt nghiệp là gì? Nếu không làm KLTN thì tốt nghiệp bằng cách nào?"
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/HCMUS_Curriculum_Roadmap_Planner.xlsx",
+      "menu/file/Mau_Don_Bao_Luu_Chuyen_Nganh_Rut_Mon_HCMUS.docx",
+      "menu/file/Cam_Nang_Co_Van_Hoc_Tap_HCMUS.docx"
+    ],
+    "links": [
+      {
+        "title": "Portal HCMUS (Đăng ký học phần)",
+        "url": "https://portal.hcmus.edu.vn"
+      },
+      {
+        "title": "Phòng Đào tạo (Khung CTĐT & Biểu mẫu)",
+        "url": "https://pdt.hcmus.edu.vn"
+      },
+      {
+        "title": "Quy chế Đào tạo Tín chỉ (QĐ 1175)",
+        "url": "https://pdt.hcmus.edu.vn/quy-che-dao-tao"
+      }
+    ],
+    "infographics": [
+      "menu/pic/prerequisite_course_tree.png",
+      "menu/pic/academic_leave_process_flowchart.png",
+      "menu/pic/study_credit_limits_chart.png"
+    ]
+  }
+}
