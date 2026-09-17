@@ -1,0 +1,8 @@
+# Runtime user context must never be versioned.
+runtime/users/
+runtime/user-data/
+*.user-profile.json
+
+# Python bytecode is generated locally and is not repository content.
+__pycache__/
+*.py[cod]

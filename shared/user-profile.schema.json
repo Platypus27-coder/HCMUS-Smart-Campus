@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/hcmus-smart-campus/user-profile.schema.json",
+  "title": "HCMUS Smart Campus Runtime User Profile",
+  "description": "A consent-aware, minimal runtime profile. Unknown optional values may be null and null never means zero.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "user_id": { "type": ["string", "null"], "description": "Pseudonymous runtime identifier when available." },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "display_name": { "type": ["string", "null"], "maxLength": 100 }
+          }
+        },
+        "academic": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "university": { "type": ["string", "null"] },
+            "major": { "type": ["string", "null"] },
+            "academic_year": { "type": ["integer", "null"], "minimum": 1 },
+            "current_gpa": { "type": ["number", "null"], "minimum": 0 },
+            "gpa_scale": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+            "earned_credits": { "type": ["number", "null"], "minimum": 0 },
+            "training_score": { "type": ["number", "null"], "minimum": 0 }
+          }
+        },
+        "preferences": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "language": { "type": ["string", "null"] },
+            "response_style": { "type": ["string", "null"], "enum": ["brief", "detailed", null] }
+          }
+        },
+        "interests": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "research_topics": { "$ref": "#/$defs/nullableStringArray" },
+            "club_interests": { "$ref": "#/$defs/nullableStringArray" },
+            "career_interests": { "$ref": "#/$defs/nullableStringArray" }
+          }
+        },
+        "current_goals": { "$ref": "#/$defs/nullableStringArray" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "user_confirmed": { "type": ["boolean", "null"] },
+        "last_updated": { "type": ["string", "null"], "format": "date-time" },
+        "consent_to_store": { "type": ["boolean", "null"] }
+      }
+    }
+  },
+  "$defs": {
+    "nullableStringArray": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  }
+}

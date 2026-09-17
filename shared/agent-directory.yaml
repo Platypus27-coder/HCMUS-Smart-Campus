@@ -1,0 +1,163 @@
+# Authoritative directory of HCMUS Smart Campus agents.
+# This file describes capabilities only; it does not contain institutional facts.
+version: "1.0"
+agents:
+  - id: schedule-deadline-agent
+    name: "Schedule & Deadline Agent"
+    subspace: "01-academic-training"
+    role: "Guides users to public schedules, deadlines, and information that should be verified with the responsible unit."
+    capabilities: [find_public_schedule_information, identify_deadline_questions, recommend_verification]
+    accepts: [request_topic, academic_year, campus, date_range]
+    returns: [schedule_guidance, deadline_checklist, verification_recommendation]
+    limitations: [no_realtime_schedule_access, no_internal_calendar_access, verified_sources_required]
+    keywords: ["lịch học", "lịch thi", "deadline", "hạn chót", "thời khóa biểu"]
+
+  - id: gpa-academic-standing-agent
+    name: "GPA & Academic Standing Agent"
+    subspace: "01-academic-training"
+    role: "Calculates user-provided GPA data, simulates future outcomes, and explains academic-standing considerations."
+    capabilities: [calculate_gpa, simulate_future_gpa, assess_academic_standing]
+    accepts: [current_gpa, earned_credits, course_grades, planned_courses, expected_grades]
+    returns: [calculated_gpa, projected_gpa, academic_status]
+    limitations: [no_sis_access, no_automatic_grade_access, calculations_require_user_provided_data]
+    keywords: ["GPA", "điểm trung bình", "tín chỉ", "học vụ"]
+
+  - id: academic-advisor-agent
+    name: "Academic Advisor Agent"
+    subspace: "01-academic-training"
+    role: "Helps review study progress and draft a tentative learning plan from verified programme information and user-provided progress."
+    capabilities: [review_study_progress, analyze_prerequisite_context, recommend_semester_plan]
+    accepts: [major, academic_year, completed_courses, planned_courses, current_gpa, learning_goals]
+    returns: [progress_summary, tentative_study_plan, risk_notes]
+    limitations: [no_official_advising_authority, verified_curriculum_required, no_student_record_access]
+    keywords: ["lộ trình học", "môn tiên quyết", "đăng ký môn", "tốt nghiệp"]
+
+  - id: scholarship-matching-agent
+    name: "Scholarship Matching Agent"
+    subspace: "02-student-services"
+    role: "Matches a user-provided profile against verified scholarship knowledge and identifies gaps and next actions."
+    capabilities: [screen_scholarship_eligibility, rank_verified_opportunities, identify_missing_requirements]
+    accepts: [major, academic_year, current_gpa, earned_credits, training_score, eligibility_context]
+    returns: [match_summary, missing_requirements, next_actions]
+    limitations: [no_unverified_scholarship_claims, no_financial_record_access, verified_sources_required]
+    keywords: ["học bổng", "điều kiện", "GPA", "hồ sơ", "hạn nộp"]
+
+  - id: library-research-agent
+    name: "Library Research Agent"
+    subspace: "02-student-services"
+    role: "Guides search strategy, academic resource discovery, citation management, and public library services."
+    capabilities: [design_search_strategy, generate_keywords, recommend_resource_types, explain_citation_workflows]
+    accepts: [research_topic, course_names, keywords, preferred_databases, citation_style]
+    returns: [search_strategy, suggested_keywords, resource_guidance, citation_guidance]
+    limitations: [no_private_library_account_access, no_guaranteed_resource_availability, verified_sources_required]
+    keywords: ["thư viện", "IEEE", "tài liệu", "trích dẫn", "tìm bài báo"]
+
+  - id: clubs-activities-agent
+    name: "Clubs & Activities Agent"
+    subspace: "02-student-services"
+    role: "Helps explore student clubs, activities, and verified participation-related guidance."
+    capabilities: [recommend_activity_types, map_interests_to_clubs, explain_participation_steps]
+    accepts: [club_interests, career_interests, availability, activity_goals]
+    returns: [activity_recommendations, participation_guidance, verification_recommendation]
+    limitations: [no_realtime_event_access, no_unverified_activity_claims, verified_sources_required]
+    keywords: ["câu lạc bộ", "CLB", "hoạt động", "điểm rèn luyện", "Đoàn Hội"]
+
+  - id: administrative-procedure-agent
+    name: "Administrative Procedure Agent"
+    subspace: "03-administration-one-stop"
+    role: "Explains verified administrative procedures, required documents, and preparation steps."
+    capabilities: [explain_procedure, prepare_document_checklist, identify_submission_steps]
+    accepts: [procedure_type, purpose, deadline_context, available_documents]
+    returns: [procedure_guidance, document_checklist, next_actions]
+    limitations: [no_submission_authority, no_internal_case_access, verified_sources_required]
+    keywords: ["thủ tục", "giấy xác nhận", "biểu mẫu", "một cửa", "hồ sơ"]
+
+  - id: regulation-qa-agent
+    name: "Regulation Q&A Agent"
+    subspace: "03-administration-one-stop"
+    role: "Answers questions about verified regulations and highlights when an official interpretation is needed."
+    capabilities: [explain_regulation, identify_applicable_rule, recommend_official_verification]
+    accepts: [question, regulation_topic, situation_summary]
+    returns: [regulation_guidance, source_requirements, verification_recommendation]
+    limitations: [no_legal_or_official_interpretation, no_unverified_policy_claims, verified_sources_required]
+    keywords: ["quy chế", "quy định", "nội quy", "kỷ luật", "quyền lợi"]
+
+  - id: department-contact-agent
+    name: "Department Contact Agent"
+    subspace: "03-administration-one-stop"
+    role: "Directs users to the appropriate university unit using verified public contact information."
+    capabilities: [identify_responsible_unit, provide_verified_contact_guidance, recommend_follow_up]
+    accepts: [request_topic, procedure_type, campus, preferred_contact_channel]
+    returns: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+    limitations: [no_unverified_contact_details, no_internal_directory_access, verified_sources_required]
+    keywords: ["liên hệ", "phòng ban", "khoa", "hotline", "địa chỉ"]
+
+  - id: teaching-material-assistant
+    name: "Teaching Material Assistant"
+    subspace: "04-teaching-research"
+    role: "Supports drafting teaching materials and learning activities while preserving academic integrity."
+    capabilities: [draft_learning_material, suggest_exercise_structure, align_material_to_learning_goals]
+    accepts: [subject_area, learning_objectives, learner_level, material_type]
+    returns: [material_outline, activity_suggestions, academic_integrity_notes]
+    limitations: [no_claimed_official_curriculum_access, no_assessment_impersonation, human_review_required]
+    keywords: ["học liệu", "đề cương", "bài tập", "giảng dạy", "rubric"]
+
+  - id: research-assistant-agent
+    name: "Research Assistant Agent"
+    subspace: "04-teaching-research"
+    role: "Supports research planning, methodology exploration, keyword refinement, and ethical citation practices."
+    capabilities: [refine_research_question, propose_search_terms, explain_methodology_options, support_citation_planning]
+    accepts: [research_topic, research_question, methodology_needs, keywords, discipline]
+    returns: [research_plan_guidance, keyword_suggestions, methodology_guidance, limitations]
+    limitations: [no_fabricated_sources, no_research_ethics_approval, human_supervision_required]
+    keywords: ["nghiên cứu", "phương pháp", "đề tài", "khóa luận", "literature review"]
+
+  - id: class-support-agent
+    name: "Class Support Agent"
+    subspace: "04-teaching-research"
+    role: "Supports class communication, frequently asked questions, and organization of non-private class information."
+    capabilities: [draft_class_announcement, organize_class_faq, summarize_class_tasks]
+    accepts: [class_topic, announcement_content, task_list, public_schedule_context]
+    returns: [announcement_draft, faq_summary, task_summary]
+    limitations: [no_private_class_roster_access, no_grade_access, no_realtime_lms_access]
+    keywords: ["lớp học", "thông báo", "FAQ", "bài tập", "môn học"]
+
+  - id: student-wellbeing-agent
+    name: "Student Well-being Agent"
+    subspace: "05-student-life-development"
+    role: "Offers non-clinical wellbeing support, self-care guidance, and appropriate escalation guidance."
+    capabilities: [provide_self_care_guidance, identify_support_options, encourage_appropriate_escalation]
+    accepts: [wellbeing_goal, situation_summary, preferred_support_style]
+    returns: [supportive_guidance, suggested_next_steps, safety_notice]
+    limitations: [no_diagnosis, no_emergency_service_replacement, no_health_record_access]
+    keywords: ["sức khỏe tinh thần", "stress", "wellbeing", "căng thẳng", "tâm lý"]
+
+  - id: soft-skills-coach-agent
+    name: "Soft Skills Coach Agent"
+    subspace: "05-student-life-development"
+    role: "Helps users practice communication, presentation, collaboration, and career-readiness skills."
+    capabilities: [coach_communication, practice_presentation, suggest_skill_development_plan]
+    accepts: [skill_goal, career_interests, current_challenges, practice_context]
+    returns: [practice_plan, feedback_framework, next_steps]
+    limitations: [no_guaranteed_employment_outcome, no_private_employer_data, user_practice_required]
+    keywords: ["kỹ năng mềm", "thuyết trình", "giao tiếp", "phỏng vấn", "nghề nghiệp"]
+
+  - id: campus-router-agent
+    name: "Campus Router Agent"
+    subspace: "06-central-orchestration"
+    role: "Identifies user intent, selects relevant agents, and creates minimum-context handoff envelopes."
+    capabilities: [detect_intent, decompose_multi_intent_request, select_agents, prepare_handoff_context]
+    accepts: [user_request, available_user_context, agent_directory, relationship_graph]
+    returns: [routing_plan, handoff_envelopes, missing_information]
+    limitations: [no_specialist_fact_invention, no_full_profile_forwarding, no_runtime_execution_guarantee]
+    keywords: ["bắt đầu", "giúp tôi", "tôi cần", "nhiều yêu cầu", "điều phối"]
+
+  - id: campus-aggregator-agent
+    name: "Campus Aggregator Agent"
+    subspace: "06-central-orchestration"
+    role: "Combines structured specialist outputs into a coherent response and action plan while preserving limitations and provenance."
+    capabilities: [merge_specialist_outputs, identify_conflicts, produce_action_plan, preserve_provenance]
+    accepts: [routing_plan, specialist_responses, user_request]
+    returns: [unified_response, action_plan, assumptions, limitations]
+    limitations: [no_specialist_fact_invention, no_runtime_execution_guarantee, preserve_source_limits]
+    keywords: ["tổng hợp", "kế hoạch hành động", "kết quả", "toàn diện", "điều phối"]

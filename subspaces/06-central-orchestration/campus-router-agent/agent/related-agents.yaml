@@ -1,0 +1,286 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit unless you also update the source relationship map.
+current_agent: campus-router-agent
+related_agents:
+- agent: schedule-deadline-agent
+  relationship: refers_to
+  reason: Routes requests about public schedules and deadlines.
+  when_to_use:
+  - intent is schedule_or_deadline
+  send:
+  - user_request
+  - academic_year
+  - campus
+  - date_range
+  do_not_send:
+  - unrelated_profile_fields
+  - sensitive_personal_information
+  expected_output:
+  - schedule_guidance
+  - deadline_checklist
+- agent: gpa-academic-standing-agent
+  relationship: refers_to
+  reason: Routes GPA calculation and simulation requests.
+  when_to_use:
+  - intent is gpa_or_academic_standing
+  send:
+  - user_request
+  - current_gpa
+  - earned_credits
+  - course_grades
+  - planned_courses
+  - expected_grades
+  do_not_send:
+  - student_id
+  - full_transcript
+  - unrelated_profile_fields
+  expected_output:
+  - calculated_gpa
+  - projected_gpa
+  - academic_status
+- agent: academic-advisor-agent
+  relationship: refers_to
+  reason: Routes study-progress and learning-plan requests.
+  when_to_use:
+  - intent is academic_planning
+  send:
+  - user_request
+  - major
+  - academic_year
+  - completed_courses
+  - planned_courses
+  - learning_goals
+  do_not_send:
+  - student_id
+  - unrelated_profile_fields
+  - sensitive_personal_information
+  expected_output:
+  - progress_summary
+  - tentative_study_plan
+  - risk_notes
+- agent: scholarship-matching-agent
+  relationship: refers_to
+  reason: Routes verified scholarship matching requests.
+  when_to_use:
+  - intent is scholarship
+  send:
+  - user_request
+  - major
+  - academic_year
+  - current_gpa
+  - earned_credits
+  - training_score
+  do_not_send:
+  - student_id
+  - financial_records
+  - unrelated_profile_fields
+  expected_output:
+  - match_summary
+  - missing_requirements
+  - next_actions
+- agent: library-research-agent
+  relationship: refers_to
+  reason: Routes resource discovery and library-search requests.
+  when_to_use:
+  - intent is library_or_resource_search
+  send:
+  - user_request
+  - research_topic
+  - course_names
+  - keywords
+  - citation_style
+  do_not_send:
+  - student_id
+  - unrelated_profile_fields
+  - private_library_credentials
+  expected_output:
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance
+- agent: clubs-activities-agent
+  relationship: refers_to
+  reason: Routes club and activity discovery requests.
+  when_to_use:
+  - intent is clubs_or_activities
+  send:
+  - user_request
+  - club_interests
+  - career_interests
+  - availability
+  - activity_goals
+  do_not_send:
+  - student_id
+  - unrelated_profile_fields
+  - sensitive_personal_information
+  expected_output:
+  - activity_recommendations
+  - participation_guidance
+- agent: administrative-procedure-agent
+  relationship: refers_to
+  reason: Routes requests for administrative procedure guidance.
+  when_to_use:
+  - intent is administrative_procedure
+  send:
+  - user_request
+  - procedure_type
+  - purpose
+  - deadline_context
+  - available_documents
+  do_not_send:
+  - student_id
+  - submitted_documents
+  - unrelated_profile_fields
+  expected_output:
+  - procedure_guidance
+  - document_checklist
+  - next_actions
+- agent: regulation-qa-agent
+  relationship: refers_to
+  reason: Routes regulation and policy questions.
+  when_to_use:
+  - intent is regulation_question
+  send:
+  - user_request
+  - question
+  - regulation_topic
+  - situation_summary
+  do_not_send:
+  - student_id
+  - sensitive_personal_information
+  - unrelated_profile_fields
+  expected_output:
+  - regulation_guidance
+  - verification_recommendation
+- agent: department-contact-agent
+  relationship: refers_to
+  reason: Routes requests to identify an appropriate university unit.
+  when_to_use:
+  - intent is department_contact
+  send:
+  - user_request
+  - request_topic
+  - procedure_type
+  - campus
+  - preferred_contact_channel
+  do_not_send:
+  - student_id
+  - unrelated_profile_fields
+  - sensitive_personal_information
+  expected_output:
+  - responsible_unit_guidance
+  - contact_guidance
+- agent: teaching-material-assistant
+  relationship: refers_to
+  reason: Routes requests to draft or structure teaching materials.
+  when_to_use:
+  - intent is teaching_material
+  send:
+  - user_request
+  - subject_area
+  - learning_objectives
+  - learner_level
+  - material_type
+  do_not_send:
+  - student_id
+  - private_class_data
+  - unrelated_profile_fields
+  expected_output:
+  - material_outline
+  - activity_suggestions
+  - academic_integrity_notes
+- agent: research-assistant-agent
+  relationship: refers_to
+  reason: Routes research planning and methodology requests.
+  when_to_use:
+  - intent is research_support
+  send:
+  - user_request
+  - research_topic
+  - research_question
+  - methodology_needs
+  - keywords
+  - discipline
+  do_not_send:
+  - student_id
+  - unrelated_profile_fields
+  - sensitive_personal_information
+  expected_output:
+  - research_plan_guidance
+  - keyword_suggestions
+  - methodology_guidance
+- agent: class-support-agent
+  relationship: refers_to
+  reason: Routes non-private class communication and FAQ requests.
+  when_to_use:
+  - intent is class_support
+  send:
+  - user_request
+  - class_topic
+  - announcement_content
+  - task_list
+  - public_schedule_context
+  do_not_send:
+  - class_roster
+  - private_grade_data
+  - student_id
+  expected_output:
+  - announcement_draft
+  - faq_summary
+  - task_summary
+- agent: student-wellbeing-agent
+  relationship: refers_to
+  reason: Routes non-clinical wellbeing and self-care requests.
+  when_to_use:
+  - intent is wellbeing
+  send:
+  - user_request
+  - wellbeing_goal
+  - situation_summary
+  - preferred_support_style
+  do_not_send:
+  - health_records
+  - student_id
+  - unrelated_profile_fields
+  expected_output:
+  - supportive_guidance
+  - suggested_next_steps
+  - safety_notice
+- agent: soft-skills-coach-agent
+  relationship: refers_to
+  reason: Routes skill-development and practice requests.
+  when_to_use:
+  - intent is soft_skills
+  send:
+  - user_request
+  - skill_goal
+  - career_interests
+  - current_challenges
+  - practice_context
+  do_not_send:
+  - student_id
+  - unrelated_profile_fields
+  - sensitive_personal_information
+  expected_output:
+  - practice_plan
+  - feedback_framework
+  - next_steps
+- agent: campus-aggregator-agent
+  relationship: provides_data_to
+  reason: Provides the routing plan and collected structured responses for final synthesis.
+  when_to_use:
+  - one or more specialist responses are ready
+  - a multi-intent request needs a unified response
+  send:
+  - user_request
+  - routing_plan
+  - specialist_responses
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  - unrelated_personal_data
+  expected_output:
+  - unified_response
+  - action_plan
+  - assumptions
+  - limitations

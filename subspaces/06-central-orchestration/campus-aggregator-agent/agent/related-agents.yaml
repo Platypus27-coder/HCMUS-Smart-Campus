@@ -1,0 +1,255 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit unless you also update the source relationship map.
+current_agent: campus-aggregator-agent
+related_agents:
+- agent: campus-router-agent
+  relationship: collaborates_with
+  reason: Uses the Router's routing plan to preserve intent coverage in the final response.
+  when_to_use:
+  - routing plan is available
+  send:
+  - user_request
+  - specialist_responses
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - routing_plan
+  - missing_information
+- agent: schedule-deadline-agent
+  relationship: collaborates_with
+  reason: Incorporates structured schedule and deadline guidance.
+  when_to_use:
+  - schedule specialist response is available
+  send:
+  - user_request
+  - schedule_guidance
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - schedule_guidance
+  - deadline_checklist
+- agent: gpa-academic-standing-agent
+  relationship: collaborates_with
+  reason: Incorporates calculated or projected GPA results.
+  when_to_use:
+  - GPA specialist response is available
+  send:
+  - user_request
+  - calculated_gpa
+  - projected_gpa
+  - academic_status
+  do_not_send:
+  - full_transcript
+  - student_id
+  - raw_sensitive_data
+  expected_output:
+  - calculated_gpa
+  - projected_gpa
+  - academic_status
+- agent: academic-advisor-agent
+  relationship: collaborates_with
+  reason: Incorporates tentative learning-plan guidance.
+  when_to_use:
+  - academic-advisor response is available
+  send:
+  - user_request
+  - progress_summary
+  - tentative_study_plan
+  - risk_notes
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - progress_summary
+  - tentative_study_plan
+  - risk_notes
+- agent: scholarship-matching-agent
+  relationship: collaborates_with
+  reason: Incorporates verified scholarship matching results.
+  when_to_use:
+  - scholarship specialist response is available
+  send:
+  - user_request
+  - match_summary
+  - missing_requirements
+  - next_actions
+  do_not_send:
+  - financial_records
+  - student_id
+  - raw_sensitive_data
+  expected_output:
+  - match_summary
+  - missing_requirements
+  - next_actions
+- agent: library-research-agent
+  relationship: collaborates_with
+  reason: Incorporates resource-search guidance.
+  when_to_use:
+  - library specialist response is available
+  send:
+  - user_request
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance
+- agent: clubs-activities-agent
+  relationship: collaborates_with
+  reason: Incorporates activity recommendations.
+  when_to_use:
+  - clubs specialist response is available
+  send:
+  - user_request
+  - activity_recommendations
+  - participation_guidance
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - activity_recommendations
+  - participation_guidance
+- agent: administrative-procedure-agent
+  relationship: collaborates_with
+  reason: Incorporates procedural next actions.
+  when_to_use:
+  - administrative specialist response is available
+  send:
+  - user_request
+  - procedure_guidance
+  - document_checklist
+  - next_actions
+  do_not_send:
+  - submitted_documents
+  - student_id
+  - raw_sensitive_data
+  expected_output:
+  - procedure_guidance
+  - document_checklist
+  - next_actions
+- agent: regulation-qa-agent
+  relationship: collaborates_with
+  reason: Incorporates regulation guidance and verification notes.
+  when_to_use:
+  - regulation specialist response is available
+  send:
+  - user_request
+  - regulation_guidance
+  - verification_recommendation
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - regulation_guidance
+  - source_requirements
+  - verification_recommendation
+- agent: department-contact-agent
+  relationship: collaborates_with
+  reason: Incorporates responsible-unit guidance.
+  when_to_use:
+  - contact specialist response is available
+  send:
+  - user_request
+  - responsible_unit_guidance
+  - contact_guidance
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - responsible_unit_guidance
+  - contact_guidance
+  - follow_up_steps
+- agent: teaching-material-assistant
+  relationship: collaborates_with
+  reason: Incorporates material and activity suggestions.
+  when_to_use:
+  - teaching-material response is available
+  send:
+  - user_request
+  - material_outline
+  - activity_suggestions
+  - academic_integrity_notes
+  do_not_send:
+  - private_class_data
+  - raw_sensitive_data
+  expected_output:
+  - material_outline
+  - activity_suggestions
+  - academic_integrity_notes
+- agent: research-assistant-agent
+  relationship: collaborates_with
+  reason: Incorporates research planning guidance.
+  when_to_use:
+  - research specialist response is available
+  send:
+  - user_request
+  - research_plan_guidance
+  - keyword_suggestions
+  - methodology_guidance
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - research_plan_guidance
+  - keyword_suggestions
+  - methodology_guidance
+- agent: class-support-agent
+  relationship: collaborates_with
+  reason: Incorporates class communication support.
+  when_to_use:
+  - class-support response is available
+  send:
+  - user_request
+  - announcement_draft
+  - faq_summary
+  - task_summary
+  do_not_send:
+  - class_roster
+  - private_grade_data
+  - raw_sensitive_data
+  expected_output:
+  - announcement_draft
+  - faq_summary
+  - task_summary
+- agent: student-wellbeing-agent
+  relationship: collaborates_with
+  reason: Incorporates non-clinical wellbeing guidance with safety limitations.
+  when_to_use:
+  - wellbeing specialist response is available
+  send:
+  - user_request
+  - supportive_guidance
+  - suggested_next_steps
+  - safety_notice
+  do_not_send:
+  - health_records
+  - raw_sensitive_data
+  - full_user_profile
+  expected_output:
+  - supportive_guidance
+  - suggested_next_steps
+  - safety_notice
+- agent: soft-skills-coach-agent
+  relationship: collaborates_with
+  reason: Incorporates skill-development guidance.
+  when_to_use:
+  - soft-skills specialist response is available
+  send:
+  - user_request
+  - practice_plan
+  - feedback_framework
+  - next_steps
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - practice_plan
+  - feedback_framework
+  - next_steps

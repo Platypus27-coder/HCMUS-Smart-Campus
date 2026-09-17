@@ -1,0 +1,24 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit unless you also update the source relationship map.
+current_agent: teaching-material-assistant
+related_agents:
+- agent: research-assistant-agent
+  relationship: supports
+  reason: Teaching materials may need research references, methodology framing, or citation guidance.
+  when_to_use:
+  - evidence-based material is requested
+  - research references are needed
+  - methodology support is useful
+  send:
+  - subject_area
+  - learning_objectives
+  - material_type
+  do_not_send:
+  - student_id
+  - private_class_data
+  - unrelated_personal_data
+  expected_output:
+  - research_plan_guidance
+  - keyword_suggestions
+  - methodology_guidance

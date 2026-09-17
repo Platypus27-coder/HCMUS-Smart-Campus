@@ -1,0 +1,353 @@
+# Source-of-truth relationship graph. Keys are source agent IDs.
+# Only context needed by the target task may be included in a handoff.
+version: "1.0"
+relationships:
+  scholarship-matching-agent:
+    - target: gpa-academic-standing-agent
+      relationship: requests_validation_from
+      reason: "Scholarship assessment can require calculation or projection of user-provided GPA data."
+      triggers: ["scholarship eligibility depends on GPA", "projected GPA is required", "GPA needs recalculation from user-provided grades"]
+      send: [current_gpa, earned_credits, planned_courses, expected_grades]
+      do_not_send: [student_id, full_transcript, financial_information, unrelated_personal_data]
+      expected_output: [calculated_gpa, projected_gpa, academic_status]
+    - target: administrative-procedure-agent
+      relationship: refers_to
+      reason: "A user who has a verified opportunity may need procedural guidance for preparing an application."
+      triggers: ["user asks how to prepare an application", "a verified scholarship requires documents", "user requests submission steps"]
+      send: [opportunity_identifier, required_documents, deadline_context]
+      do_not_send: [student_id, financial_records, unrelated_academic_history]
+      expected_output: [procedure_guidance, document_checklist, next_actions]
+
+  academic-advisor-agent:
+    - target: gpa-academic-standing-agent
+      relationship: requests_validation_from
+      reason: "A proposed study plan may depend on a user-provided current or projected GPA."
+      triggers: ["user asks for GPA impact", "plan needs a GPA projection", "academic status needs calculation"]
+      send: [current_gpa, earned_credits, planned_courses, expected_grades]
+      do_not_send: [student_id, full_transcript, unrelated_personal_data]
+      expected_output: [calculated_gpa, projected_gpa, academic_status]
+    - target: schedule-deadline-agent
+      relationship: collaborates_with
+      reason: "A tentative semester plan may need public calendar or deadline guidance."
+      triggers: ["user asks about planning dates", "registration timing is relevant", "public academic deadline needs verification"]
+      send: [academic_year, campus, date_range, request_topic]
+      do_not_send: [course_grades, student_id, unrelated_personal_data]
+      expected_output: [schedule_guidance, deadline_checklist, verification_recommendation]
+    - target: library-research-agent
+      relationship: supports
+      reason: "Recommended learning plans can be supported with a search strategy for relevant course resources."
+      triggers: ["user requests study resources", "course names are known", "user needs a learning-resource search strategy"]
+      send: [major, course_names, learning_goals]
+      do_not_send: [student_id, current_gpa, unrelated_personal_data]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+
+  library-research-agent:
+    - target: research-assistant-agent
+      relationship: collaborates_with
+      reason: "A literature search may need help refining a research question or methodology context."
+      triggers: ["research question is unclear", "methodology context is needed", "user asks for literature-review planning"]
+      send: [research_topic, research_question, keywords, discipline]
+      do_not_send: [student_id, unrelated_personal_data, private_library_credentials]
+      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
+
+  research-assistant-agent:
+    - target: library-research-agent
+      relationship: collaborates_with
+      reason: "Research planning may require a concrete literature-search strategy and resource guidance."
+      triggers: ["user needs databases or search terms", "literature review is required", "citation workflow is requested"]
+      send: [research_topic, research_question, keywords, citation_style]
+      do_not_send: [student_id, unrelated_personal_data, private_library_credentials]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance, citation_guidance]
+
+  clubs-activities-agent:
+    - target: regulation-qa-agent
+      relationship: requests_validation_from
+      reason: "Participation-related questions may need verified clarification of applicable rules."
+      triggers: ["user asks about a rule", "participation condition needs clarification", "activity guidance depends on a regulation"]
+      send: [question, regulation_topic, situation_summary]
+      do_not_send: [student_id, unrelated_personal_data, sensitive_personal_information]
+      expected_output: [regulation_guidance, source_requirements, verification_recommendation]
+
+  administrative-procedure-agent:
+    - target: department-contact-agent
+      relationship: refers_to
+      reason: "A procedure may require the user to confirm details with the responsible unit."
+      triggers: ["responsible unit is unknown", "user needs a contact channel", "procedure requires official confirmation"]
+      send: [procedure_type, request_topic, campus, preferred_contact_channel]
+      do_not_send: [student_id, submitted_documents, unrelated_personal_data]
+      expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+    - target: regulation-qa-agent
+      relationship: requests_validation_from
+      reason: "A procedure may depend on an applicable rule that needs verified explanation."
+      triggers: ["rule interpretation is needed", "user disputes a procedure condition", "policy source must be clarified"]
+      send: [question, regulation_topic, situation_summary]
+      do_not_send: [student_id, sensitive_personal_information, unrelated_personal_data]
+      expected_output: [regulation_guidance, source_requirements, verification_recommendation]
+
+  regulation-qa-agent:
+    - target: administrative-procedure-agent
+      relationship: refers_to
+      reason: "After a regulation is explained, the user may need practical procedure and document guidance."
+      triggers: ["user asks what to do next", "documents are needed", "a submission process is requested"]
+      send: [procedure_type, purpose, deadline_context, available_documents]
+      do_not_send: [student_id, full_case_history, unrelated_personal_data]
+      expected_output: [procedure_guidance, document_checklist, next_actions]
+
+  schedule-deadline-agent:
+    - target: department-contact-agent
+      relationship: refers_to
+      reason: "Public schedule information can require confirmation from the responsible unit."
+      triggers: ["information is missing or outdated", "user asks who can confirm", "public deadline needs official verification"]
+      send: [request_topic, campus, preferred_contact_channel]
+      do_not_send: [student_id, unrelated_personal_data, private_calendar_data]
+      expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+
+  teaching-material-assistant:
+    - target: research-assistant-agent
+      relationship: supports
+      reason: "Teaching materials may need research references, methodology framing, or citation guidance."
+      triggers: ["evidence-based material is requested", "research references are needed", "methodology support is useful"]
+      send: [subject_area, learning_objectives, material_type]
+      do_not_send: [student_id, private_class_data, unrelated_personal_data]
+      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
+
+  class-support-agent:
+    - target: schedule-deadline-agent
+      relationship: supports
+      reason: "A class communication request may need public schedule or deadline guidance."
+      triggers: ["announcement concerns a public deadline", "class schedule context is needed", "user asks about a public academic date"]
+      send: [class_topic, public_schedule_context, date_range]
+      do_not_send: [class_roster, student_id, private_grade_data]
+      expected_output: [schedule_guidance, deadline_checklist, verification_recommendation]
+
+  student-wellbeing-agent:
+    - target: department-contact-agent
+      relationship: refers_to
+      reason: "When the user asks for an institutional support channel, verified contact guidance is needed."
+      triggers: ["user requests a university support contact", "a responsible unit needs identification", "contact information must be verified"]
+      send: [request_topic, preferred_contact_channel]
+      do_not_send: [health_details, student_id, sensitive_personal_information]
+      expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+
+  soft-skills-coach-agent:
+    - target: clubs-activities-agent
+      relationship: supports
+      reason: "A user may want activity opportunities to practice a targeted skill."
+      triggers: ["user wants practice opportunities", "club interests are relevant", "peer activity is requested"]
+      send: [skill_goal, club_interests, career_interests, availability]
+      do_not_send: [student_id, unrelated_personal_data, sensitive_personal_information]
+      expected_output: [activity_recommendations, participation_guidance, verification_recommendation]
+
+  campus-router-agent:
+    - target: schedule-deadline-agent
+      relationship: refers_to
+      reason: "Routes requests about public schedules and deadlines."
+      triggers: ["intent is schedule_or_deadline"]
+      send: [user_request, academic_year, campus, date_range]
+      do_not_send: [unrelated_profile_fields, sensitive_personal_information]
+      expected_output: [schedule_guidance, deadline_checklist]
+    - target: gpa-academic-standing-agent
+      relationship: refers_to
+      reason: "Routes GPA calculation and simulation requests."
+      triggers: ["intent is gpa_or_academic_standing"]
+      send: [user_request, current_gpa, earned_credits, course_grades, planned_courses, expected_grades]
+      do_not_send: [student_id, full_transcript, unrelated_profile_fields]
+      expected_output: [calculated_gpa, projected_gpa, academic_status]
+    - target: academic-advisor-agent
+      relationship: refers_to
+      reason: "Routes study-progress and learning-plan requests."
+      triggers: ["intent is academic_planning"]
+      send: [user_request, major, academic_year, completed_courses, planned_courses, learning_goals]
+      do_not_send: [student_id, unrelated_profile_fields, sensitive_personal_information]
+      expected_output: [progress_summary, tentative_study_plan, risk_notes]
+    - target: scholarship-matching-agent
+      relationship: refers_to
+      reason: "Routes verified scholarship matching requests."
+      triggers: ["intent is scholarship"]
+      send: [user_request, major, academic_year, current_gpa, earned_credits, training_score]
+      do_not_send: [student_id, financial_records, unrelated_profile_fields]
+      expected_output: [match_summary, missing_requirements, next_actions]
+    - target: library-research-agent
+      relationship: refers_to
+      reason: "Routes resource discovery and library-search requests."
+      triggers: ["intent is library_or_resource_search"]
+      send: [user_request, research_topic, course_names, keywords, citation_style]
+      do_not_send: [student_id, unrelated_profile_fields, private_library_credentials]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+    - target: clubs-activities-agent
+      relationship: refers_to
+      reason: "Routes club and activity discovery requests."
+      triggers: ["intent is clubs_or_activities"]
+      send: [user_request, club_interests, career_interests, availability, activity_goals]
+      do_not_send: [student_id, unrelated_profile_fields, sensitive_personal_information]
+      expected_output: [activity_recommendations, participation_guidance]
+    - target: administrative-procedure-agent
+      relationship: refers_to
+      reason: "Routes requests for administrative procedure guidance."
+      triggers: ["intent is administrative_procedure"]
+      send: [user_request, procedure_type, purpose, deadline_context, available_documents]
+      do_not_send: [student_id, submitted_documents, unrelated_profile_fields]
+      expected_output: [procedure_guidance, document_checklist, next_actions]
+    - target: regulation-qa-agent
+      relationship: refers_to
+      reason: "Routes regulation and policy questions."
+      triggers: ["intent is regulation_question"]
+      send: [user_request, question, regulation_topic, situation_summary]
+      do_not_send: [student_id, sensitive_personal_information, unrelated_profile_fields]
+      expected_output: [regulation_guidance, verification_recommendation]
+    - target: department-contact-agent
+      relationship: refers_to
+      reason: "Routes requests to identify an appropriate university unit."
+      triggers: ["intent is department_contact"]
+      send: [user_request, request_topic, procedure_type, campus, preferred_contact_channel]
+      do_not_send: [student_id, unrelated_profile_fields, sensitive_personal_information]
+      expected_output: [responsible_unit_guidance, contact_guidance]
+    - target: teaching-material-assistant
+      relationship: refers_to
+      reason: "Routes requests to draft or structure teaching materials."
+      triggers: ["intent is teaching_material"]
+      send: [user_request, subject_area, learning_objectives, learner_level, material_type]
+      do_not_send: [student_id, private_class_data, unrelated_profile_fields]
+      expected_output: [material_outline, activity_suggestions, academic_integrity_notes]
+    - target: research-assistant-agent
+      relationship: refers_to
+      reason: "Routes research planning and methodology requests."
+      triggers: ["intent is research_support"]
+      send: [user_request, research_topic, research_question, methodology_needs, keywords, discipline]
+      do_not_send: [student_id, unrelated_profile_fields, sensitive_personal_information]
+      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
+    - target: class-support-agent
+      relationship: refers_to
+      reason: "Routes non-private class communication and FAQ requests."
+      triggers: ["intent is class_support"]
+      send: [user_request, class_topic, announcement_content, task_list, public_schedule_context]
+      do_not_send: [class_roster, private_grade_data, student_id]
+      expected_output: [announcement_draft, faq_summary, task_summary]
+    - target: student-wellbeing-agent
+      relationship: refers_to
+      reason: "Routes non-clinical wellbeing and self-care requests."
+      triggers: ["intent is wellbeing"]
+      send: [user_request, wellbeing_goal, situation_summary, preferred_support_style]
+      do_not_send: [health_records, student_id, unrelated_profile_fields]
+      expected_output: [supportive_guidance, suggested_next_steps, safety_notice]
+    - target: soft-skills-coach-agent
+      relationship: refers_to
+      reason: "Routes skill-development and practice requests."
+      triggers: ["intent is soft_skills"]
+      send: [user_request, skill_goal, career_interests, current_challenges, practice_context]
+      do_not_send: [student_id, unrelated_profile_fields, sensitive_personal_information]
+      expected_output: [practice_plan, feedback_framework, next_steps]
+    - target: campus-aggregator-agent
+      relationship: provides_data_to
+      reason: "Provides the routing plan and collected structured responses for final synthesis."
+      triggers: ["one or more specialist responses are ready", "a multi-intent request needs a unified response"]
+      send: [user_request, routing_plan, specialist_responses]
+      do_not_send: [full_user_profile, raw_sensitive_data, unrelated_personal_data]
+      expected_output: [unified_response, action_plan, assumptions, limitations]
+
+  campus-aggregator-agent:
+    - target: campus-router-agent
+      relationship: collaborates_with
+      reason: "Uses the Router's routing plan to preserve intent coverage in the final response."
+      triggers: ["routing plan is available"]
+      send: [user_request, specialist_responses]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [routing_plan, missing_information]
+    - target: schedule-deadline-agent
+      relationship: collaborates_with
+      reason: "Incorporates structured schedule and deadline guidance."
+      triggers: ["schedule specialist response is available"]
+      send: [user_request, schedule_guidance]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [schedule_guidance, deadline_checklist]
+    - target: gpa-academic-standing-agent
+      relationship: collaborates_with
+      reason: "Incorporates calculated or projected GPA results."
+      triggers: ["GPA specialist response is available"]
+      send: [user_request, calculated_gpa, projected_gpa, academic_status]
+      do_not_send: [full_transcript, student_id, raw_sensitive_data]
+      expected_output: [calculated_gpa, projected_gpa, academic_status]
+    - target: academic-advisor-agent
+      relationship: collaborates_with
+      reason: "Incorporates tentative learning-plan guidance."
+      triggers: ["academic-advisor response is available"]
+      send: [user_request, progress_summary, tentative_study_plan, risk_notes]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [progress_summary, tentative_study_plan, risk_notes]
+    - target: scholarship-matching-agent
+      relationship: collaborates_with
+      reason: "Incorporates verified scholarship matching results."
+      triggers: ["scholarship specialist response is available"]
+      send: [user_request, match_summary, missing_requirements, next_actions]
+      do_not_send: [financial_records, student_id, raw_sensitive_data]
+      expected_output: [match_summary, missing_requirements, next_actions]
+    - target: library-research-agent
+      relationship: collaborates_with
+      reason: "Incorporates resource-search guidance."
+      triggers: ["library specialist response is available"]
+      send: [user_request, search_strategy, suggested_keywords, resource_guidance]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+    - target: clubs-activities-agent
+      relationship: collaborates_with
+      reason: "Incorporates activity recommendations."
+      triggers: ["clubs specialist response is available"]
+      send: [user_request, activity_recommendations, participation_guidance]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [activity_recommendations, participation_guidance]
+    - target: administrative-procedure-agent
+      relationship: collaborates_with
+      reason: "Incorporates procedural next actions."
+      triggers: ["administrative specialist response is available"]
+      send: [user_request, procedure_guidance, document_checklist, next_actions]
+      do_not_send: [submitted_documents, student_id, raw_sensitive_data]
+      expected_output: [procedure_guidance, document_checklist, next_actions]
+    - target: regulation-qa-agent
+      relationship: collaborates_with
+      reason: "Incorporates regulation guidance and verification notes."
+      triggers: ["regulation specialist response is available"]
+      send: [user_request, regulation_guidance, verification_recommendation]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [regulation_guidance, source_requirements, verification_recommendation]
+    - target: department-contact-agent
+      relationship: collaborates_with
+      reason: "Incorporates responsible-unit guidance."
+      triggers: ["contact specialist response is available"]
+      send: [user_request, responsible_unit_guidance, contact_guidance]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+    - target: teaching-material-assistant
+      relationship: collaborates_with
+      reason: "Incorporates material and activity suggestions."
+      triggers: ["teaching-material response is available"]
+      send: [user_request, material_outline, activity_suggestions, academic_integrity_notes]
+      do_not_send: [private_class_data, raw_sensitive_data]
+      expected_output: [material_outline, activity_suggestions, academic_integrity_notes]
+    - target: research-assistant-agent
+      relationship: collaborates_with
+      reason: "Incorporates research planning guidance."
+      triggers: ["research specialist response is available"]
+      send: [user_request, research_plan_guidance, keyword_suggestions, methodology_guidance]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
+    - target: class-support-agent
+      relationship: collaborates_with
+      reason: "Incorporates class communication support."
+      triggers: ["class-support response is available"]
+      send: [user_request, announcement_draft, faq_summary, task_summary]
+      do_not_send: [class_roster, private_grade_data, raw_sensitive_data]
+      expected_output: [announcement_draft, faq_summary, task_summary]
+    - target: student-wellbeing-agent
+      relationship: collaborates_with
+      reason: "Incorporates non-clinical wellbeing guidance with safety limitations."
+      triggers: ["wellbeing specialist response is available"]
+      send: [user_request, supportive_guidance, suggested_next_steps, safety_notice]
+      do_not_send: [health_records, raw_sensitive_data, full_user_profile]
+      expected_output: [supportive_guidance, suggested_next_steps, safety_notice]
+    - target: soft-skills-coach-agent
+      relationship: collaborates_with
+      reason: "Incorporates skill-development guidance."
+      triggers: ["soft-skills specialist response is available"]
+      send: [user_request, practice_plan, feedback_framework, next_steps]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [practice_plan, feedback_framework, next_steps]

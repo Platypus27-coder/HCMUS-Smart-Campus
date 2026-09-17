@@ -1,0 +1,64 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit unless you also update the source relationship map.
+current_agent: academic-advisor-agent
+related_agents:
+- agent: gpa-academic-standing-agent
+  relationship: requests_validation_from
+  reason: A proposed study plan may depend on a user-provided current or projected GPA.
+  when_to_use:
+  - user asks for GPA impact
+  - plan needs a GPA projection
+  - academic status needs calculation
+  send:
+  - current_gpa
+  - earned_credits
+  - planned_courses
+  - expected_grades
+  do_not_send:
+  - student_id
+  - full_transcript
+  - unrelated_personal_data
+  expected_output:
+  - calculated_gpa
+  - projected_gpa
+  - academic_status
+- agent: schedule-deadline-agent
+  relationship: collaborates_with
+  reason: A tentative semester plan may need public calendar or deadline guidance.
+  when_to_use:
+  - user asks about planning dates
+  - registration timing is relevant
+  - public academic deadline needs verification
+  send:
+  - academic_year
+  - campus
+  - date_range
+  - request_topic
+  do_not_send:
+  - course_grades
+  - student_id
+  - unrelated_personal_data
+  expected_output:
+  - schedule_guidance
+  - deadline_checklist
+  - verification_recommendation
+- agent: library-research-agent
+  relationship: supports
+  reason: Recommended learning plans can be supported with a search strategy for relevant course resources.
+  when_to_use:
+  - user requests study resources
+  - course names are known
+  - user needs a learning-resource search strategy
+  send:
+  - major
+  - course_names
+  - learning_goals
+  do_not_send:
+  - student_id
+  - current_gpa
+  - unrelated_personal_data
+  expected_output:
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance

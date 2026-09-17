@@ -300,6 +300,48 @@ subspaces/02-student-services/scholarship-matching-agent
 
 ---
 
+## 🔗 Agent Coordination Artifacts
+
+The repository contains coordination metadata that prepares the agent packages for a future orchestration runtime. These files do **not** mean that Router, Aggregator, inter-agent calls, persistent memory, or Wesome AI integration are already implemented.
+
+```text
+shared/agent-directory.yaml
+    Global directory of all agents. Primarily for Campus Router and Campus Aggregator.
+
+shared/agent-relationships.yaml
+    Source-of-truth relationship graph: when an agent should use another agent,
+    minimum context it may send, prohibited fields, and expected output.
+
+<agent>/agent/related-agents.yaml
+    Generated local view of only that agent's outgoing relationships.
+
+shared/handoff-protocol.md
+    Standard handoff and response contract.
+
+shared/user-profile.schema.json
+    Schema for consent-aware runtime user context; it does not store real users.
+
+shared/user-memory-policy.md
+    Rules for handling user context and sharing it safely.
+```
+
+Generate local relationship views after editing the source-of-truth graph:
+
+```bash
+python scripts/generate_related_agents.py
+```
+
+Validate source metadata and generated files:
+
+```bash
+python scripts/validate_agent_graph.py
+python -m unittest discover -s tests
+```
+
+`examples/runtime/profile-summary.example.json` is clearly labelled by its path as demo-only data. Do not commit real runtime profiles; common runtime profile paths are ignored by Git.
+
+---
+
 ## 📝 Naming Convention
 
 Use lowercase **kebab-case** for folders.

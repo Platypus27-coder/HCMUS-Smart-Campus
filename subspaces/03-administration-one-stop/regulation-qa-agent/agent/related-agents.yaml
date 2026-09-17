@@ -1,0 +1,25 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit unless you also update the source relationship map.
+current_agent: regulation-qa-agent
+related_agents:
+- agent: administrative-procedure-agent
+  relationship: refers_to
+  reason: After a regulation is explained, the user may need practical procedure and document guidance.
+  when_to_use:
+  - user asks what to do next
+  - documents are needed
+  - a submission process is requested
+  send:
+  - procedure_type
+  - purpose
+  - deadline_context
+  - available_documents
+  do_not_send:
+  - student_id
+  - full_case_history
+  - unrelated_personal_data
+  expected_output:
+  - procedure_guidance
+  - document_checklist
+  - next_actions

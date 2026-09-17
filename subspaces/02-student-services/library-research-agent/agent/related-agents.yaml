@@ -1,0 +1,25 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit unless you also update the source relationship map.
+current_agent: library-research-agent
+related_agents:
+- agent: research-assistant-agent
+  relationship: collaborates_with
+  reason: A literature search may need help refining a research question or methodology context.
+  when_to_use:
+  - research question is unclear
+  - methodology context is needed
+  - user asks for literature-review planning
+  send:
+  - research_topic
+  - research_question
+  - keywords
+  - discipline
+  do_not_send:
+  - student_id
+  - unrelated_personal_data
+  - private_library_credentials
+  expected_output:
+  - research_plan_guidance
+  - keyword_suggestions
+  - methodology_guidance

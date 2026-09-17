@@ -1,0 +1,45 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit unless you also update the source relationship map.
+current_agent: scholarship-matching-agent
+related_agents:
+- agent: gpa-academic-standing-agent
+  relationship: requests_validation_from
+  reason: Scholarship assessment can require calculation or projection of user-provided GPA data.
+  when_to_use:
+  - scholarship eligibility depends on GPA
+  - projected GPA is required
+  - GPA needs recalculation from user-provided grades
+  send:
+  - current_gpa
+  - earned_credits
+  - planned_courses
+  - expected_grades
+  do_not_send:
+  - student_id
+  - full_transcript
+  - financial_information
+  - unrelated_personal_data
+  expected_output:
+  - calculated_gpa
+  - projected_gpa
+  - academic_status
+- agent: administrative-procedure-agent
+  relationship: refers_to
+  reason: A user who has a verified opportunity may need procedural guidance for preparing an application.
+  when_to_use:
+  - user asks how to prepare an application
+  - a verified scholarship requires documents
+  - user requests submission steps
+  send:
+  - opportunity_identifier
+  - required_documents
+  - deadline_context
+  do_not_send:
+  - student_id
+  - financial_records
+  - unrelated_academic_history
+  expected_output:
+  - procedure_guidance
+  - document_checklist
+  - next_actions
