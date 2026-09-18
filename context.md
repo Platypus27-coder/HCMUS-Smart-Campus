@@ -55,7 +55,7 @@ Sub-space 1          Sub-space 2          Sub-space 3
 | **SUB-SPACE 2** | **DỊCH VỤ SINH VIÊN** | • `scholarship-matching-agent` *(Flagship)*<br>• `library-research-agent`<br>• `clubs-activities-agent` | Khớp và xếp hạng học bổng phù hợp hồ sơ; Tra cứu tài nguyên số, dịch vụ thư viện; Định hướng CLB, hoạt động phong trào và điểm rèn luyện. |
 | **SUB-SPACE 3** | **HÀNH CHÍNH & MỘT CỬA** | • `administrative-procedure-agent`<br>• `regulation-qa-agent`<br>• `department-contact-agent` | Hướng dẫn thủ tục, giấy tờ, biểu mẫu một cửa; Trả lời quy chế, nội quy học đường; Tra cứu đầu mối phòng ban, hotline, địa chỉ làm việc. |
 | **SUB-SPACE 4** | **GIẢNG VIÊN & NGHIÊN CỨU** | • `teaching-material-assistant`<br>• `research-assistant`<br>• `class-support-agent` | Hỗ trợ soạn đề cương, bài tập, học liệu an toàn học thuật; Hướng dẫn phương pháp nghiên cứu, tìm kiếm tài liệu; Hỗ trợ quản lý lớp học. |
-| **SUB-SPACE 5** | **ĐỜI SỐNG & PHÁT TRIỂN** | • `student-wellbeing-agent`<br>• `soft-skill-agent` | Tư vấn sức khỏe tinh thần, điều hướng PSY.US, tự chăm sóc; Luyện giao tiếp, thuyết trình, kỹ năng mềm, định hướng nghề nghiệp. |
+| **SUB-SPACE 5** | **ĐỜI SỐNG & PHÁT TRIỂN** | • `student-wellbeing-agent`<br>• `soft-skills-coach-agent` | Tư vấn sức khỏe tinh thần, điều hướng PSY.US, tự chăm sóc; Luyện giao tiếp, thuyết trình, kỹ năng mềm, định hướng nghề nghiệp. |
 | **SUB-SPACE 6** | **ĐIỀU PHỐI TRUNG TÂM** | • `campus-router-agent` *(Flagship)*<br>• `campus-aggregator-agent` | Phân tích intent, bóc tách đa ý định, phân luồng yêu cầu; Tổng hợp câu trả lời từ nhiều agent, giải quyết xung đột, lập Action Plan. |
 
 ---
