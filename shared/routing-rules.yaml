@@ -89,29 +89,37 @@ soft_rules:
     context_fields: [request_topic, procedure_type, campus]
     preferred_agents: [department-contact-agent]
     multi_intent_allowed: true
-  - id: teaching_material
-    description: "Route teaching-material drafting questions to Teaching Material Assistant."
-    positive_intents: [teaching_material]
-    positive_signals: ["học liệu", "đề cương", "bài tập", "giảng dạy"]
-    required_capabilities: [draft_learning_material]
-    context_fields: [subject_area, learning_objectives, learner_level, material_type]
-    preferred_agents: [teaching-material-assistant]
+  - id: general_education_learning
+    description: "Route general education concept explanation, math/physics guidance, and sample exercise requests to General Education Tutor Agent."
+    positive_intents: [general_education_learning]
+    positive_signals: ["đại cương", "giải tích", "đại số", "vật lý đại cương", "xác suất thống kê"]
+    required_capabilities: [explain_math_physics_concepts]
+    context_fields: [course_name, topic_name, problem_statement, learning_goals]
+    preferred_agents: [general-education-tutor-agent]
     multi_intent_allowed: true
-  - id: research_support
-    description: "Route research-planning and methodology questions to Research Assistant Agent."
-    positive_intents: [research_support]
-    positive_signals: ["nghiên cứu", "phương pháp", "đề tài", "khóa luận"]
-    required_capabilities: [refine_research_question]
-    context_fields: [research_topic, research_question, methodology_needs, keywords]
-    preferred_agents: [research-assistant-agent]
+  - id: political_theory_learning
+    description: "Route political theory explanation, philosophy mindmaps, and exam review requests to Political Theory Tutor Agent."
+    positive_intents: [political_theory_learning]
+    positive_signals: ["triết học", "kinh tế chính trị", "chủ nghĩa xã hội khoa học", "tư tưởng hồ chí minh", "lịch sử đảng"]
+    required_capabilities: [explain_political_philosophy]
+    context_fields: [course_name, topic_name, exam_review_topic, study_questions]
+    preferred_agents: [political-theory-tutor-agent]
     multi_intent_allowed: true
-  - id: class_support
-    description: "Route non-private class communication and FAQ questions to Class Support Agent."
-    positive_intents: [class_support]
-    positive_signals: ["lớp học", "thông báo", "FAQ", "bài tập"]
-    required_capabilities: [organize_class_faq]
-    context_fields: [class_topic, announcement_content, task_list]
-    preferred_agents: [class-support-agent]
+  - id: core_foundations_learning
+    description: "Route core computer science, programming, DSA, database, and system architecture questions to Core Foundations Tutor Agent."
+    positive_intents: [core_foundations_learning]
+    positive_signals: ["cơ sở ngành", "lập trình", "cấu trúc dữ liệu", "giải thuật", "cơ sở dữ liệu", "kiến trúc máy tính", "hệ điều hành"]
+    required_capabilities: [explain_data_structures]
+    context_fields: [course_name, programming_language, algorithm_topic, database_schema]
+    preferred_agents: [core-foundations-tutor-agent]
+    multi_intent_allowed: true
+  - id: specialized_major_learning
+    description: "Route specialized major subjects (AI/Data Science, Software Engineering, Security, Networks, IS) to Specialized Major Tutor Agent."
+    positive_intents: [specialized_major_learning]
+    positive_signals: ["chuyên ngành", "trí tuệ nhân tạo", "học máy", "kỹ thuật phần mềm", "an toàn thông tin", "khoa học dữ liệu"]
+    required_capabilities: [explain_ai_ml_architectures]
+    context_fields: [specialization, course_name, advanced_topic, technology_stack]
+    preferred_agents: [specialized-major-tutor-agent]
     multi_intent_allowed: true
   - id: wellbeing
     description: "Route non-clinical wellbeing questions to Student Well-being Agent."

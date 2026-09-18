@@ -1,0 +1,43 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit.
+# Update the canonical relationship graph and regenerate instead.
+current_agent: political-theory-tutor-agent
+related_agents:
+- agent: library-research-agent
+  relationship: collaborates_with
+  reason: Locating official MoET political theory textbooks and reference materials at HCMUS library.
+  when_to_use:
+  - user requests official political theory textbook
+  - study guide materials are needed
+  - curriculum references requested
+  send:
+  - course_name
+  - topic_name
+  - exam_review_topic
+  do_not_send:
+  - student_id
+  - exam_papers
+  - unrelated_personal_data
+  expected_output:
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance
+- agent: academic-advisor-agent
+  relationship: refers_to
+  reason: Planning the distribution of 5 mandatory political theory courses across semesters.
+  when_to_use:
+  - user asks when to take political theory courses
+  - registration planning needed
+  - course scheduling questions
+  send:
+  - academic_year
+  - major
+  - learning_goals
+  do_not_send:
+  - student_id
+  - unrelated_personal_data
+  expected_output:
+  - progress_summary
+  - tentative_study_plan
+  - risk_notes

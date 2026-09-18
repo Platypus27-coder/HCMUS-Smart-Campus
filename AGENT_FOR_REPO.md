@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-HCMUS Smart Campus – AI University Life Hub is a multi-agent university-life support prototype. The repository stores agent packages, verified knowledge resources, and coordination metadata for 6 subspaces and 16 canonical product agents.
+HCMUS Smart Campus – AI University Life Hub is a multi-agent university-life support prototype. The repository stores agent packages, verified knowledge resources, and coordination metadata for 6 subspaces and 17 canonical product agents.
 
 ## Current Project Status
 
@@ -10,7 +10,7 @@ Metadata and documentation do not prove a runtime feature exists. Do not claim t
 
 ## Canonical Architecture
 
-The six subspaces are Academic & Training, Student Services, Administration & One-stop Services, Teaching & Research, Student Life & Development, and Central Orchestration. The authoritative list of the 16 agents is `shared/agent-directory.yaml`; use `soft-skills-coach-agent`, never `soft-skill-agent`.
+The six subspaces are Academic & Training, Student Services, Administration & One-stop Services, Academic Tutoring, Student Life & Development, and Central Orchestration. The authoritative list of the 17 agents is `shared/agent-directory.yaml`; use `soft-skills-coach-agent`, never `soft-skill-agent`.
 
 ## Sources of Truth
 

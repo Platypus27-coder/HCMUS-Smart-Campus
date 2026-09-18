@@ -4,23 +4,22 @@
 # Update the canonical relationship graph and regenerate instead.
 current_agent: library-research-agent
 related_agents:
-- agent: research-assistant-agent
+- agent: specialized-major-tutor-agent
   relationship: collaborates_with
-  reason: A literature search may need help refining a research question or methodology context.
+  reason: Literature search and digital database queries can collaborate with specialized major topics and research domains.
   when_to_use:
-  - research question is unclear
-  - methodology context is needed
-  - user asks for literature-review planning
+  - specialized academic search is needed
+  - technical domain resources are requested
+  - user asks for advanced papers
   send:
   - research_topic
-  - research_question
   - keywords
-  - discipline
+  - preferred_databases
   do_not_send:
   - student_id
   - unrelated_personal_data
   - private_library_credentials
   expected_output:
-  - research_plan_guidance
-  - keyword_suggestions
-  - methodology_guidance
+  - specialized_guidance
+  - learning_roadmap
+  - user_context_summary

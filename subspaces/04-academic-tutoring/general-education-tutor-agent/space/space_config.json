@@ -1,0 +1,47 @@
+{
+  "space_id": "general-education-tutor-agent",
+  "name": "General Education Tutor Hub (Trợ giảng Môn Đại cương)",
+  "subspace": "04-academic-tutoring",
+  "is_flagship": false,
+  "version": "1.0.0",
+  "theme": "academic-learning",
+  "avatar": "agent/background.png",
+  "description": "Trợ giảng chuyên sâu khối kiến thức Đại cương (Toán giải tích, Đại số tuyến tính, Vật lý đại cương, Xác suất thống kê, Tiếng Anh) cho sinh viên Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
+  "welcome_message": "Chào bạn! Tôi là **General Education Tutor Agent** – Trợ giảng học tập khối kiến thức Đại cương tại HCMUS Smart Campus. 📐🔬\n\nTôi ở đây để đồng hành cùng bạn chinh phục các môn học nền tảng năm nhất và năm hai:\n• 📊 **Toán học & Thống kê:** Giải tích 1-2, Đại số tuyến tính, Xác suất thống kê – giải thích định lý, phương pháp tích phân, vi phân, ma trận.\n• ⚡ **Vật lý đại cương:** Cơ - Nhiệt, Điện - Từ, Quang học và bài tập ứng dụng.\n• 🔤 **Ngoại ngữ & Phương pháp học:** Định hướng phương pháp học đại học hiệu quả, tài liệu ôn tập môn Tiếng Anh.\n• 🤝 **Kết nối học tập:** Tóm tắt hồ sơ môn học của bạn và kết nối Thư viện để mượn giáo trình hoặc Cố vấn học vụ khi cần hỗ trợ tiến độ đào tạo.\n\n*Lưu ý đạo đức học thuật:* Tôi hướng dẫn phương pháp giải, giải thích bản chất khái niệm và bài tập mẫu, không giải hộ bài thi/kiểm tra chính thức.\n\nHôm nay bạn cần trợ giúp môn đại cương nào?",
+  "conversation_starters": [
+    {
+      "label": "📐 Phương pháp tích phân Giải tích 2",
+      "prompt": "Hướng dẫn em các dạng tích phân bội hai và tích phân mặt trong Giải tích 2 thường gặp và phương pháp giải?"
+    },
+    {
+      "label": "🔢 Tìm ma trận nghịch đảo & Chéo hóa",
+      "prompt": "Giải thích bản chất và các bước chéo hóa ma trận trong môn Đại số tuyến tính?"
+    },
+    {
+      "label": "📊 Phân phối xác suất trong Thống kê",
+      "prompt": "Phân biệt khi nào dùng Phân phối Nhị thức, Phân phối Poisson và Phân phối Chuẩn trong Xác suất Thống kê?"
+    },
+    {
+      "label": "📚 Tìm giáo trình môn học ở Thư viện",
+      "prompt": "Em muốn tìm giáo trình và bài tập mẫu chính thức của Khoa Toán cho môn Giải tích 1 ở thư viện thì làm sao?"
+    }
+  ],
+  "menu_resources": {
+    "files": [],
+    "links": [
+      {
+        "title": "Khoa Toán - Tin học HCMUS",
+        "url": "https://math.hcmus.edu.vn"
+      },
+      {
+        "title": "Khoa Vật lý - Vật lý Kỹ thuật HCMUS",
+        "url": "https://phys.hcmus.edu.vn"
+      },
+      {
+        "title": "Thư viện HCMUS (Giáo trình & Sách)",
+        "url": "http://www.lib.hcmus.edu.vn"
+      }
+    ],
+    "infographics": []
+  }
+}

@@ -171,64 +171,82 @@ related_agents:
   expected_output:
   - responsible_unit_guidance
   - contact_guidance
-- agent: teaching-material-assistant
+- agent: general-education-tutor-agent
   relationship: refers_to
-  reason: Routes requests to draft or structure teaching materials.
+  reason: Routes general education concept explanation, math/physics guidance, and sample exercise requests.
   when_to_use:
-  - intent is teaching_material
+  - intent is general_education_learning
   send:
   - user_request
-  - subject_area
-  - learning_objectives
-  - learner_level
-  - material_type
-  do_not_send:
-  - student_id
-  - private_class_data
-  - unrelated_profile_fields
-  expected_output:
-  - material_outline
-  - activity_suggestions
-  - academic_integrity_notes
-- agent: research-assistant-agent
-  relationship: refers_to
-  reason: Routes research planning and methodology requests.
-  when_to_use:
-  - intent is research_support
-  send:
-  - user_request
-  - research_topic
-  - research_question
-  - methodology_needs
-  - keywords
-  - discipline
+  - course_name
+  - topic_name
+  - problem_statement
+  - learning_goals
   do_not_send:
   - student_id
   - unrelated_profile_fields
-  - sensitive_personal_information
+  - exam_papers
   expected_output:
-  - research_plan_guidance
-  - keyword_suggestions
-  - methodology_guidance
-- agent: class-support-agent
+  - concept_explanation
+  - solution_guidance
+  - practice_suggestions
+- agent: political-theory-tutor-agent
   relationship: refers_to
-  reason: Routes non-private class communication and FAQ requests.
+  reason: Routes political theory explanation, philosophy mindmaps, and exam review requests.
   when_to_use:
-  - intent is class_support
+  - intent is political_theory_learning
   send:
   - user_request
-  - class_topic
-  - announcement_content
-  - task_list
-  - public_schedule_context
+  - course_name
+  - topic_name
+  - exam_review_topic
+  - study_questions
   do_not_send:
-  - class_roster
-  - private_grade_data
   - student_id
+  - unrelated_profile_fields
+  - sensitive_political_opinions
   expected_output:
-  - announcement_draft
-  - faq_summary
-  - task_summary
+  - theory_explanation
+  - concept_mindmap_outline
+  - study_guidance
+- agent: core-foundations-tutor-agent
+  relationship: refers_to
+  reason: Routes core computer science, programming, DSA, database, and system architecture questions.
+  when_to_use:
+  - intent is core_foundations_learning
+  send:
+  - user_request
+  - course_name
+  - programming_language
+  - algorithm_topic
+  - database_schema
+  do_not_send:
+  - student_id
+  - graded_homework_code
+  - wecode_tests
+  expected_output:
+  - conceptual_guidance
+  - algorithmic_hints
+  - debugging_strategy
+- agent: specialized-major-tutor-agent
+  relationship: refers_to
+  reason: Routes specialized major subjects (AI/Data Science, Software Engineering, Security, Networks, IS).
+  when_to_use:
+  - intent is specialized_major_learning
+  send:
+  - user_request
+  - specialization
+  - course_name
+  - advanced_topic
+  - technology_stack
+  do_not_send:
+  - student_id
+  - commercial_code
+  - private_capstone_materials
+  expected_output:
+  - specialized_guidance
+  - architectural_analysis
+  - learning_roadmap
 - agent: student-wellbeing-agent
   relationship: refers_to
   reason: Routes non-clinical wellbeing and self-care requests.

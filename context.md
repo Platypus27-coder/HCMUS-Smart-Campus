@@ -1,6 +1,6 @@
 # HCMUS SMART CAMPUS – AI UNIVERSITY LIFE HUB
 > **Tagline:** One Campus. One AI Gateway. Every Student Service.  
-> **Kiến trúc:** 1 Main Space → 6 Sub-spaces → 16 Specialized Agents → 1 Router → 1 Aggregator → 1 Unified Service Journey.  
+> **Kiến trúc:** 1 Main Space → 6 Sub-spaces → 17 Specialized Agents → 1 Router → 1 Aggregator → 1 Unified Service Journey.  
 > **Định danh chính thức:** *HCMUS Smart Campus – Student-built prototype demonstrating an AI-native university service ecosystem using publicly available HCMUS information.*
 
 ---
@@ -47,14 +47,14 @@ Sub-space 1          Sub-space 2          Sub-space 3
 
 ---
 
-## 2. Sơ đồ Cấu trúc: 6 Sub-spaces | 16 Specialized Agents
+## 2. Sơ đồ Cấu trúc: 6 Sub-spaces | 17 Specialized Agents
 
 | Sub-space | Tên Sub-space | Danh sách Agents | Trọng tâm nhiệm vụ |
 |:---|:---|:---|:---|
 | **SUB-SPACE 1** | **HỌC VỤ & ĐÀO TẠO** | • `schedule-deadline-agent`<br>• `gpa-academic-standing-agent`<br>• `academic-advisor-agent` *(Flagship)* | Tra cứu lịch học, lịch thi, deadline; Tính toán mô phỏng GPA, cảnh báo học vụ; Định hướng lộ trình học tập, chuẩn đầu ra, môn tiên quyết. |
 | **SUB-SPACE 2** | **DỊCH VỤ SINH VIÊN** | • `scholarship-matching-agent` *(Flagship)*<br>• `library-research-agent`<br>• `clubs-activities-agent` | Khớp và xếp hạng học bổng phù hợp hồ sơ; Tra cứu tài nguyên số, dịch vụ thư viện; Định hướng CLB, hoạt động phong trào và điểm rèn luyện. |
 | **SUB-SPACE 3** | **HÀNH CHÍNH & MỘT CỬA** | • `administrative-procedure-agent`<br>• `regulation-qa-agent`<br>• `department-contact-agent` | Hướng dẫn thủ tục, giấy tờ, biểu mẫu một cửa; Trả lời quy chế, nội quy học đường; Tra cứu đầu mối phòng ban, hotline, địa chỉ làm việc. |
-| **SUB-SPACE 4** | **GIẢNG VIÊN & NGHIÊN CỨU** | • `teaching-material-assistant`<br>• `research-assistant`<br>• `class-support-agent` | Hỗ trợ soạn đề cương, bài tập, học liệu an toàn học thuật; Hướng dẫn phương pháp nghiên cứu, tìm kiếm tài liệu; Hỗ trợ quản lý lớp học. |
+| **SUB-SPACE 4** | **HỌC TẬP & TRỢ GIẢNG MÔN HỌC** | • `general-education-tutor-agent`<br>• `political-theory-tutor-agent`<br>• `core-foundations-tutor-agent`<br>• `specialized-major-tutor-agent` | Trợ giảng 4 tầng đào tạo: Đại cương (Giải tích, Đại số, Vật lý), Lý luận chính trị (Triết, KTCT, CNXHKH, TT HCM, Đảng), Cơ sở ngành (NMLT, KTLT, DSA, CSDL, KTMT) và Chuyên ngành (AI/DS, SE, Security, Mạng). |
 | **SUB-SPACE 5** | **ĐỜI SỐNG & PHÁT TRIỂN** | • `student-wellbeing-agent`<br>• `soft-skills-coach-agent` | Tư vấn sức khỏe tinh thần, điều hướng PSY.US, tự chăm sóc; Luyện giao tiếp, thuyết trình, kỹ năng mềm, định hướng nghề nghiệp. |
 | **SUB-SPACE 6** | **ĐIỀU PHỐI TRUNG TÂM** | • `campus-router-agent` *(Flagship)*<br>• `campus-aggregator-agent` | Phân tích intent, bóc tách đa ý định, phân luồng yêu cầu; Tổng hợp câu trả lời từ nhiều agent, giải quyết xung đột, lập Action Plan. |
 

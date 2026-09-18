@@ -167,58 +167,74 @@ related_agents:
   - responsible_unit_guidance
   - contact_guidance
   - follow_up_steps
-- agent: teaching-material-assistant
+- agent: general-education-tutor-agent
   relationship: collaborates_with
-  reason: Incorporates material and activity suggestions.
+  reason: Incorporates general education learning guidance into comprehensive study plan.
   when_to_use:
-  - teaching-material response is available
+  - general education specialist response is available
   send:
   - user_request
-  - material_outline
-  - activity_suggestions
-  - academic_integrity_notes
-  do_not_send:
-  - private_class_data
-  - raw_sensitive_data
-  expected_output:
-  - material_outline
-  - activity_suggestions
-  - academic_integrity_notes
-- agent: research-assistant-agent
-  relationship: collaborates_with
-  reason: Incorporates research planning guidance.
-  when_to_use:
-  - research specialist response is available
-  send:
-  - user_request
-  - research_plan_guidance
-  - keyword_suggestions
-  - methodology_guidance
+  - concept_explanation
+  - solution_guidance
+  - practice_suggestions
   do_not_send:
   - full_user_profile
   - raw_sensitive_data
   expected_output:
-  - research_plan_guidance
-  - keyword_suggestions
-  - methodology_guidance
-- agent: class-support-agent
+  - concept_explanation
+  - solution_guidance
+  - practice_suggestions
+- agent: political-theory-tutor-agent
   relationship: collaborates_with
-  reason: Incorporates class communication support.
+  reason: Incorporates political theory review and mindmap guidance.
   when_to_use:
-  - class-support response is available
+  - political theory specialist response is available
   send:
   - user_request
-  - announcement_draft
-  - faq_summary
-  - task_summary
+  - theory_explanation
+  - concept_mindmap_outline
+  - study_guidance
   do_not_send:
-  - class_roster
-  - private_grade_data
+  - full_user_profile
   - raw_sensitive_data
   expected_output:
-  - announcement_draft
-  - faq_summary
-  - task_summary
+  - theory_explanation
+  - concept_mindmap_outline
+  - study_guidance
+- agent: core-foundations-tutor-agent
+  relationship: collaborates_with
+  reason: Incorporates core programming and algorithmic guidance.
+  when_to_use:
+  - core foundations specialist response is available
+  send:
+  - user_request
+  - conceptual_guidance
+  - algorithmic_hints
+  - debugging_strategy
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - conceptual_guidance
+  - algorithmic_hints
+  - debugging_strategy
+- agent: specialized-major-tutor-agent
+  relationship: collaborates_with
+  reason: Incorporates advanced specialized guidance and technical roadmaps.
+  when_to_use:
+  - specialized major specialist response is available
+  send:
+  - user_request
+  - specialized_guidance
+  - architectural_analysis
+  - learning_roadmap
+  do_not_send:
+  - full_user_profile
+  - raw_sensitive_data
+  expected_output:
+  - specialized_guidance
+  - architectural_analysis
+  - learning_roadmap
 - agent: student-wellbeing-agent
   relationship: collaborates_with
   reason: Incorporates non-clinical wellbeing guidance with safety limitations.

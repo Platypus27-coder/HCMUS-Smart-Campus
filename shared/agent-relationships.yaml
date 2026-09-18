@@ -43,22 +43,13 @@ relationships:
       expected_output: [search_strategy, suggested_keywords, resource_guidance]
 
   library-research-agent:
-    - target: research-assistant-agent
+    - target: specialized-major-tutor-agent
       relationship: collaborates_with
-      reason: "A literature search may need help refining a research question or methodology context."
-      triggers: ["research question is unclear", "methodology context is needed", "user asks for literature-review planning"]
-      send: [research_topic, research_question, keywords, discipline]
+      reason: "Literature search and digital database queries can collaborate with specialized major topics and research domains."
+      triggers: ["specialized academic search is needed", "technical domain resources are requested", "user asks for advanced papers"]
+      send: [research_topic, keywords, preferred_databases]
       do_not_send: [student_id, unrelated_personal_data, private_library_credentials]
-      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
-
-  research-assistant-agent:
-    - target: library-research-agent
-      relationship: collaborates_with
-      reason: "Research planning may require a concrete literature-search strategy and resource guidance."
-      triggers: ["user needs databases or search terms", "literature review is required", "citation workflow is requested"]
-      send: [research_topic, research_question, keywords, citation_style]
-      do_not_send: [student_id, unrelated_personal_data, private_library_credentials]
-      expected_output: [search_strategy, suggested_keywords, resource_guidance, citation_guidance]
+      expected_output: [specialized_guidance, learning_roadmap, user_context_summary]
 
   clubs-activities-agent:
     - target: regulation-qa-agent
@@ -103,23 +94,76 @@ relationships:
       do_not_send: [student_id, unrelated_personal_data, private_calendar_data]
       expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
 
-  teaching-material-assistant:
-    - target: research-assistant-agent
-      relationship: supports
-      reason: "Teaching materials may need research references, methodology framing, or citation guidance."
-      triggers: ["evidence-based material is requested", "research references are needed", "methodology support is useful"]
-      send: [subject_area, learning_objectives, material_type]
-      do_not_send: [student_id, private_class_data, unrelated_personal_data]
-      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
+  general-education-tutor-agent:
+    - target: library-research-agent
+      relationship: collaborates_with
+      reason: "Finding official textbooks and exercises for general education courses."
+      triggers: ["user needs official calculus/physics textbooks", "sample problem books are requested", "course syllabus references needed"]
+      send: [course_name, topic_name, learning_goals]
+      do_not_send: [student_id, exam_questions, unrelated_personal_data]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+    - target: academic-advisor-agent
+      relationship: refers_to
+      reason: "When general education academic failure affects progress or prerequisite chains."
+      triggers: ["student fails prerequisite general ed course", "user asks about retaking rules", "course withdrawal advice is needed"]
+      send: [course_name, current_gpa, earned_credits]
+      do_not_send: [student_id, full_transcript, exam_content]
+      expected_output: [progress_summary, tentative_study_plan, risk_notes]
 
-  class-support-agent:
-    - target: schedule-deadline-agent
+  political-theory-tutor-agent:
+    - target: library-research-agent
+      relationship: collaborates_with
+      reason: "Locating official MoET political theory textbooks and reference materials at HCMUS library."
+      triggers: ["user requests official political theory textbook", "study guide materials are needed", "curriculum references requested"]
+      send: [course_name, topic_name, exam_review_topic]
+      do_not_send: [student_id, exam_papers, unrelated_personal_data]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+    - target: academic-advisor-agent
+      relationship: refers_to
+      reason: "Planning the distribution of 5 mandatory political theory courses across semesters."
+      triggers: ["user asks when to take political theory courses", "registration planning needed", "course scheduling questions"]
+      send: [academic_year, major, learning_goals]
+      do_not_send: [student_id, unrelated_personal_data]
+      expected_output: [progress_summary, tentative_study_plan, risk_notes]
+
+  core-foundations-tutor-agent:
+    - target: general-education-tutor-agent
       relationship: supports
-      reason: "A class communication request may need public schedule or deadline guidance."
-      triggers: ["announcement concerns a public deadline", "class schedule context is needed", "user asks about a public academic date"]
-      send: [class_topic, public_schedule_context, date_range]
-      do_not_send: [class_roster, student_id, private_grade_data]
-      expected_output: [schedule_guidance, deadline_checklist, verification_recommendation]
+      reason: "Core foundation algorithms and systems require discrete math, calculus, or probability background."
+      triggers: ["algorithm analysis requires mathematical foundations", "discrete math concept needed", "probability background required"]
+      send: [course_name, algorithm_topic, learning_goals]
+      do_not_send: [student_id, graded_code, homework_solutions]
+      expected_output: [concept_explanation, solution_guidance, user_context_summary]
+    - target: library-research-agent
+      relationship: collaborates_with
+      reason: "Locating classic CS textbooks and reference guides (CLRS, Silberschatz)."
+      triggers: ["user requests classic algorithm/database textbooks", "reference code documentation needed"]
+      send: [course_name, algorithm_topic, programming_language]
+      do_not_send: [student_id, graded_code, homework_solutions]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+
+  specialized-major-tutor-agent:
+    - target: core-foundations-tutor-agent
+      relationship: supports
+      reason: "Advanced specialized topics build upon foundational data structures, algorithms, and system concepts."
+      triggers: ["advanced topic requires core DSA review", "database design fundamentals needed", "system programming foundation needed"]
+      send: [specialization, course_name, advanced_topic]
+      do_not_send: [student_id, capstone_proposals, private_project_code]
+      expected_output: [conceptual_guidance, algorithmic_hints, user_context_summary]
+    - target: library-research-agent
+      relationship: collaborates_with
+      reason: "Directing users to IEEE Xplore, ACM Digital Library, and Springer for specialized papers."
+      triggers: ["user needs academic papers on AI/Security", "literature review for project", "citation for thesis topic"]
+      send: [specialization, advanced_topic, technology_stack]
+      do_not_send: [student_id, private_project_code, credentials]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+    - target: academic-advisor-agent
+      relationship: refers_to
+      reason: "Checking capstone project (KLTN) eligibility and required prerequisite credits."
+      triggers: ["user asks about graduation thesis eligibility", "credit requirements for graduation project", "advising on specialization track"]
+      send: [major, current_gpa, earned_credits]
+      do_not_send: [student_id, project_drafts, exam_content]
+      expected_output: [progress_summary, tentative_study_plan, risk_notes]
 
   student-wellbeing-agent:
     - target: department-contact-agent
@@ -203,27 +247,34 @@ relationships:
       send: [user_request, request_topic, procedure_type, campus, preferred_contact_channel]
       do_not_send: [student_id, unrelated_profile_fields, sensitive_personal_information]
       expected_output: [responsible_unit_guidance, contact_guidance]
-    - target: teaching-material-assistant
+    - target: general-education-tutor-agent
       relationship: refers_to
-      reason: "Routes requests to draft or structure teaching materials."
-      triggers: ["intent is teaching_material"]
-      send: [user_request, subject_area, learning_objectives, learner_level, material_type]
-      do_not_send: [student_id, private_class_data, unrelated_profile_fields]
-      expected_output: [material_outline, activity_suggestions, academic_integrity_notes]
-    - target: research-assistant-agent
+      reason: "Routes general education concept explanation, math/physics guidance, and sample exercise requests."
+      triggers: ["intent is general_education_learning"]
+      send: [user_request, course_name, topic_name, problem_statement, learning_goals]
+      do_not_send: [student_id, unrelated_profile_fields, exam_papers]
+      expected_output: [concept_explanation, solution_guidance, practice_suggestions]
+    - target: political-theory-tutor-agent
       relationship: refers_to
-      reason: "Routes research planning and methodology requests."
-      triggers: ["intent is research_support"]
-      send: [user_request, research_topic, research_question, methodology_needs, keywords, discipline]
-      do_not_send: [student_id, unrelated_profile_fields, sensitive_personal_information]
-      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
-    - target: class-support-agent
+      reason: "Routes political theory explanation, philosophy mindmaps, and exam review requests."
+      triggers: ["intent is political_theory_learning"]
+      send: [user_request, course_name, topic_name, exam_review_topic, study_questions]
+      do_not_send: [student_id, unrelated_profile_fields, sensitive_political_opinions]
+      expected_output: [theory_explanation, concept_mindmap_outline, study_guidance]
+    - target: core-foundations-tutor-agent
       relationship: refers_to
-      reason: "Routes non-private class communication and FAQ requests."
-      triggers: ["intent is class_support"]
-      send: [user_request, class_topic, announcement_content, task_list, public_schedule_context]
-      do_not_send: [class_roster, private_grade_data, student_id]
-      expected_output: [announcement_draft, faq_summary, task_summary]
+      reason: "Routes core computer science, programming, DSA, database, and system architecture questions."
+      triggers: ["intent is core_foundations_learning"]
+      send: [user_request, course_name, programming_language, algorithm_topic, database_schema]
+      do_not_send: [student_id, graded_homework_code, wecode_tests]
+      expected_output: [conceptual_guidance, algorithmic_hints, debugging_strategy]
+    - target: specialized-major-tutor-agent
+      relationship: refers_to
+      reason: "Routes specialized major subjects (AI/Data Science, Software Engineering, Security, Networks, IS)."
+      triggers: ["intent is specialized_major_learning"]
+      send: [user_request, specialization, course_name, advanced_topic, technology_stack]
+      do_not_send: [student_id, commercial_code, private_capstone_materials]
+      expected_output: [specialized_guidance, architectural_analysis, learning_roadmap]
     - target: student-wellbeing-agent
       relationship: refers_to
       reason: "Routes non-clinical wellbeing and self-care requests."
@@ -317,27 +368,34 @@ relationships:
       send: [user_request, responsible_unit_guidance, contact_guidance]
       do_not_send: [full_user_profile, raw_sensitive_data]
       expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
-    - target: teaching-material-assistant
+    - target: general-education-tutor-agent
       relationship: collaborates_with
-      reason: "Incorporates material and activity suggestions."
-      triggers: ["teaching-material response is available"]
-      send: [user_request, material_outline, activity_suggestions, academic_integrity_notes]
-      do_not_send: [private_class_data, raw_sensitive_data]
-      expected_output: [material_outline, activity_suggestions, academic_integrity_notes]
-    - target: research-assistant-agent
-      relationship: collaborates_with
-      reason: "Incorporates research planning guidance."
-      triggers: ["research specialist response is available"]
-      send: [user_request, research_plan_guidance, keyword_suggestions, methodology_guidance]
+      reason: "Incorporates general education learning guidance into comprehensive study plan."
+      triggers: ["general education specialist response is available"]
+      send: [user_request, concept_explanation, solution_guidance, practice_suggestions]
       do_not_send: [full_user_profile, raw_sensitive_data]
-      expected_output: [research_plan_guidance, keyword_suggestions, methodology_guidance]
-    - target: class-support-agent
+      expected_output: [concept_explanation, solution_guidance, practice_suggestions]
+    - target: political-theory-tutor-agent
       relationship: collaborates_with
-      reason: "Incorporates class communication support."
-      triggers: ["class-support response is available"]
-      send: [user_request, announcement_draft, faq_summary, task_summary]
-      do_not_send: [class_roster, private_grade_data, raw_sensitive_data]
-      expected_output: [announcement_draft, faq_summary, task_summary]
+      reason: "Incorporates political theory review and mindmap guidance."
+      triggers: ["political theory specialist response is available"]
+      send: [user_request, theory_explanation, concept_mindmap_outline, study_guidance]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [theory_explanation, concept_mindmap_outline, study_guidance]
+    - target: core-foundations-tutor-agent
+      relationship: collaborates_with
+      reason: "Incorporates core programming and algorithmic guidance."
+      triggers: ["core foundations specialist response is available"]
+      send: [user_request, conceptual_guidance, algorithmic_hints, debugging_strategy]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [conceptual_guidance, algorithmic_hints, debugging_strategy]
+    - target: specialized-major-tutor-agent
+      relationship: collaborates_with
+      reason: "Incorporates advanced specialized guidance and technical roadmaps."
+      triggers: ["specialized major specialist response is available"]
+      send: [user_request, specialized_guidance, architectural_analysis, learning_roadmap]
+      do_not_send: [full_user_profile, raw_sensitive_data]
+      expected_output: [specialized_guidance, architectural_analysis, learning_roadmap]
     - target: student-wellbeing-agent
       relationship: collaborates_with
       reason: "Incorporates non-clinical wellbeing guidance with safety limitations."

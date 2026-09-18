@@ -110,41 +110,53 @@ agents:
     limitations: [no_unverified_contact_details, no_internal_directory_access, verified_sources_required]
     keywords: ["liên hệ", "phòng ban", "khoa", "hotline", "địa chỉ"]
 
-  - id: teaching-material-assistant
-    name: "Teaching Material Assistant"
-    subspace: "04-teaching-research"
-    role: "Supports drafting teaching materials and learning activities while preserving academic integrity."
-    responsibilities: [draft_material_outline, suggest_activity_structure, preserve_academic_integrity]
-    capabilities: [draft_learning_material, suggest_exercise_structure, align_material_to_learning_goals]
-    accepts: [subject_area, learning_objectives, learner_level, material_type]
-    returns: [material_outline, activity_suggestions, academic_integrity_notes]
-    out_of_scope: [official_curriculum_approval, assessment_impersonation]
-    limitations: [no_claimed_official_curriculum_access, no_assessment_impersonation, human_review_required]
-    keywords: ["học liệu", "đề cương", "bài tập", "giảng dạy", "rubric"]
+  - id: general-education-tutor-agent
+    name: "General Education Tutor Agent"
+    subspace: "04-academic-tutoring"
+    role: "Guides learning, concept explanation, and sample exercises for general education courses (Calculus, Linear Algebra, General Physics, Probability & Statistics, English)."
+    responsibilities: [explain_general_ed_concepts, provide_sample_exercise_guidance, support_foundational_learning]
+    capabilities: [explain_math_physics_concepts, guide_sample_exercises, support_general_education_review]
+    accepts: [course_name, topic_name, problem_statement, learning_goals]
+    returns: [concept_explanation, solution_guidance, practice_suggestions, user_context_summary]
+    out_of_scope: [solve_official_exams, complete_graded_assignments, official_grade_dispute]
+    limitations: [no_exam_cheating, no_direct_homework_solving, pedagogical_guidance_only]
+    keywords: ["đại cương", "giải tích", "đại số tuyến tính", "vật lý đại cương", "xác suất thống kê", "toán cao cấp"]
 
-  - id: research-assistant-agent
-    name: "Research Assistant Agent"
-    subspace: "04-teaching-research"
-    role: "Supports research planning, methodology exploration, keyword refinement, and ethical citation practices."
-    responsibilities: [refine_research_question, explain_methodology_options, support_citation_planning]
-    capabilities: [refine_research_question, propose_search_terms, explain_methodology_options, support_citation_planning]
-    accepts: [research_topic, research_question, methodology_needs, keywords, discipline]
-    returns: [research_plan_guidance, keyword_suggestions, methodology_guidance, limitations]
-    out_of_scope: [fabricate_sources, grant_research_ethics_approval]
-    limitations: [no_fabricated_sources, no_research_ethics_approval, human_supervision_required]
-    keywords: ["nghiên cứu", "phương pháp", "đề tài", "khóa luận", "literature review"]
+  - id: political-theory-tutor-agent
+    name: "Political Theory Tutor Agent"
+    subspace: "04-academic-tutoring"
+    role: "Explains core tenets, structures concept mindmaps, and provides study guide reviews for mandatory Political Theory courses."
+    responsibilities: [explain_political_theory, summarize_philosophy_topics, outline_exam_review_questions]
+    capabilities: [explain_political_philosophy, structure_concept_mindmaps, outline_study_guidance]
+    accepts: [course_name, topic_name, exam_review_topic, study_questions]
+    returns: [theory_explanation, concept_mindmap_outline, study_guidance, user_context_summary]
+    out_of_scope: [political_speculation, non_academic_debates, exam_ghostwriting]
+    limitations: [neutral_academic_perspective, official_curriculum_aligned, no_exam_cheating]
+    keywords: ["triết học", "mác lênin", "kinh tế chính trị", "chủ nghĩa xã hội khoa học", "tư tưởng hồ chí minh", "lịch sử đảng"]
 
-  - id: class-support-agent
-    name: "Class Support Agent"
-    subspace: "04-teaching-research"
-    role: "Supports class communication, frequently asked questions, and organization of non-private class information."
-    responsibilities: [draft_class_announcement, organize_class_faq, summarize_class_tasks]
-    capabilities: [draft_class_announcement, organize_class_faq, summarize_class_tasks]
-    accepts: [class_topic, announcement_content, task_list, public_schedule_context]
-    returns: [announcement_draft, faq_summary, task_summary]
-    out_of_scope: [private_roster_access, grade_access, lms_administration]
-    limitations: [no_private_class_roster_access, no_grade_access, no_realtime_lms_access]
-    keywords: ["lớp học", "thông báo", "FAQ", "bài tập", "môn học"]
+  - id: core-foundations-tutor-agent
+    name: "Core Foundations Tutor Agent"
+    subspace: "04-academic-tutoring"
+    role: "Tutoring and debugging guidance for core computer science & discipline foundation courses (Programming, OOP, DSA, Databases, Computer Architecture, OS)."
+    responsibilities: [explain_programming_concepts, explain_dsa_principles, guide_debugging_thinking]
+    capabilities: [explain_data_structures, explain_database_normalization, guide_algorithmic_analysis]
+    accepts: [course_name, programming_language, algorithm_topic, database_schema, error_log]
+    returns: [conceptual_guidance, algorithmic_hints, debugging_strategy, user_context_summary]
+    out_of_scope: [write_full_graded_assignment, wecode_solution_dump, ghostcoding]
+    limitations: [no_direct_homework_copying, pedagogical_hints_only, no_plagiarism_facilitation]
+    keywords: ["cơ sở ngành", "lập trình", "cấu trúc dữ liệu", "giải thuật", "cơ sở dữ liệu", "kiến trúc máy tính", "hệ điều hành", "OOP", "SQL"]
+
+  - id: specialized-major-tutor-agent
+    name: "Specialized Major Tutor Agent"
+    subspace: "04-academic-tutoring"
+    role: "Supports advanced specialized major subjects (AI/Data Science, Software Engineering, Information Security, Information Systems, Networks)."
+    responsibilities: [explain_specialized_topics, guide_project_architectures, suggest_domain_technologies]
+    capabilities: [explain_ai_ml_architectures, explain_software_design_patterns, guide_security_principles]
+    accepts: [specialization, course_name, advanced_topic, project_goals, technology_stack]
+    returns: [specialized_guidance, architectural_analysis, learning_roadmap, user_context_summary]
+    out_of_scope: [capstone_project_ghostwriting, commercial_code_production, unauthorized_security_exploitation]
+    limitations: [architectural_guidance_only, no_capstone_ghostwriting, ethical_security_boundary]
+    keywords: ["chuyên ngành", "trí tuệ nhân tạo", "học máy", "kỹ thuật phần mềm", "an toàn thông tin", "khoa học dữ liệu", "hệ thống thông tin", "mạng máy tính"]
 
   - id: student-wellbeing-agent
     name: "Student Well-being Agent"

@@ -1,0 +1,44 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit.
+# Update the canonical relationship graph and regenerate instead.
+current_agent: general-education-tutor-agent
+related_agents:
+- agent: library-research-agent
+  relationship: collaborates_with
+  reason: Finding official textbooks and exercises for general education courses.
+  when_to_use:
+  - user needs official calculus/physics textbooks
+  - sample problem books are requested
+  - course syllabus references needed
+  send:
+  - course_name
+  - topic_name
+  - learning_goals
+  do_not_send:
+  - student_id
+  - exam_questions
+  - unrelated_personal_data
+  expected_output:
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance
+- agent: academic-advisor-agent
+  relationship: refers_to
+  reason: When general education academic failure affects progress or prerequisite chains.
+  when_to_use:
+  - student fails prerequisite general ed course
+  - user asks about retaking rules
+  - course withdrawal advice is needed
+  send:
+  - course_name
+  - current_gpa
+  - earned_credits
+  do_not_send:
+  - student_id
+  - full_transcript
+  - exam_content
+  expected_output:
+  - progress_summary
+  - tentative_study_plan
+  - risk_notes

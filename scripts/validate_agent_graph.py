@@ -26,9 +26,10 @@ CANONICAL_AGENTS = {
     "administrative-procedure-agent",
     "regulation-qa-agent",
     "department-contact-agent",
-    "teaching-material-assistant",
-    "research-assistant-agent",
-    "class-support-agent",
+    "general-education-tutor-agent",
+    "political-theory-tutor-agent",
+    "core-foundations-tutor-agent",
+    "specialized-major-tutor-agent",
     "student-wellbeing-agent",
     "soft-skills-coach-agent",
     "campus-router-agent",
@@ -71,8 +72,8 @@ def validate_metadata(directory_path: Path, relationships_path: Path) -> tuple[l
     if has_duplicates(ids):
         errors.append("agent-directory.yaml: duplicate agent IDs found")
     id_set = set(ids)
-    if len(ids) != 16:
-        errors.append(f"agent-directory.yaml: expected exactly 16 agents, found {len(ids)}")
+    if len(ids) != len(CANONICAL_AGENTS):
+        errors.append(f"agent-directory.yaml: expected exactly {len(CANONICAL_AGENTS)} agents, found {len(ids)}")
     if id_set != CANONICAL_AGENTS:
         missing = sorted(CANONICAL_AGENTS - id_set)
         unexpected = sorted(id_set - CANONICAL_AGENTS)
@@ -215,7 +216,7 @@ def main() -> int:
         for error in errors:
             print(f"[ERROR] {error}")
         return 1
-    print("[OK] agent-directory.yaml: 16 agents")
+    print(f"[OK] agent-directory.yaml: {len(CANONICAL_AGENTS)} agents")
     print(f"[OK] agent-relationships.yaml: {relationship_count} relationships")
     print("[OK] all relationship sources and targets exist")
     print("[OK] Router references all other agents; Aggregator represents all specialist outputs")

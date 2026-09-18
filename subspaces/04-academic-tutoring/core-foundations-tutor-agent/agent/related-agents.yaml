@@ -1,0 +1,43 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit.
+# Update the canonical relationship graph and regenerate instead.
+current_agent: core-foundations-tutor-agent
+related_agents:
+- agent: general-education-tutor-agent
+  relationship: supports
+  reason: Core foundation algorithms and systems require discrete math, calculus, or probability background.
+  when_to_use:
+  - algorithm analysis requires mathematical foundations
+  - discrete math concept needed
+  - probability background required
+  send:
+  - course_name
+  - algorithm_topic
+  - learning_goals
+  do_not_send:
+  - student_id
+  - graded_code
+  - homework_solutions
+  expected_output:
+  - concept_explanation
+  - solution_guidance
+  - user_context_summary
+- agent: library-research-agent
+  relationship: collaborates_with
+  reason: Locating classic CS textbooks and reference guides (CLRS, Silberschatz).
+  when_to_use:
+  - user requests classic algorithm/database textbooks
+  - reference code documentation needed
+  send:
+  - course_name
+  - algorithm_topic
+  - programming_language
+  do_not_send:
+  - student_id
+  - graded_code
+  - homework_solutions
+  expected_output:
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance

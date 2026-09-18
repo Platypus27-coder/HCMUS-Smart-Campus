@@ -147,10 +147,11 @@ HCMUS-Smart-Campus/
 │   │   ├── regulation-qa-agent/
 │   │   └── department-contact-agent/
 │   │
-│   ├── 04-teaching-research/
-│   │   ├── teaching-material-assistant/
-│   │   ├── research-assistant-agent/
-│   │   └── class-support-agent/
+│   ├── 04-academic-tutoring/
+│   │   ├── general-education-tutor-agent/
+│   │   ├── political-theory-tutor-agent/
+│   │   ├── core-foundations-tutor-agent/
+│   │   └── specialized-major-tutor-agent/
 │   │
 │   ├── 05-student-life-development/
 │   │   ├── student-wellbeing-agent/
@@ -374,7 +375,7 @@ Sub-spaces use numeric prefixes to keep their order stable:
 01-academic-training
 02-student-services
 03-administration-one-stop
-04-teaching-research
+04-academic-tutoring
 05-student-life-development
 06-central-orchestration
 ```

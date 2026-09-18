@@ -1,0 +1,63 @@
+# AUTO-GENERATED FILE
+# Source: shared/agent-relationships.yaml
+# Do not manually edit.
+# Update the canonical relationship graph and regenerate instead.
+current_agent: specialized-major-tutor-agent
+related_agents:
+- agent: core-foundations-tutor-agent
+  relationship: supports
+  reason: Advanced specialized topics build upon foundational data structures, algorithms, and system concepts.
+  when_to_use:
+  - advanced topic requires core DSA review
+  - database design fundamentals needed
+  - system programming foundation needed
+  send:
+  - specialization
+  - course_name
+  - advanced_topic
+  do_not_send:
+  - student_id
+  - capstone_proposals
+  - private_project_code
+  expected_output:
+  - conceptual_guidance
+  - algorithmic_hints
+  - user_context_summary
+- agent: library-research-agent
+  relationship: collaborates_with
+  reason: Directing users to IEEE Xplore, ACM Digital Library, and Springer for specialized papers.
+  when_to_use:
+  - user needs academic papers on AI/Security
+  - literature review for project
+  - citation for thesis topic
+  send:
+  - specialization
+  - advanced_topic
+  - technology_stack
+  do_not_send:
+  - student_id
+  - private_project_code
+  - credentials
+  expected_output:
+  - search_strategy
+  - suggested_keywords
+  - resource_guidance
+- agent: academic-advisor-agent
+  relationship: refers_to
+  reason: Checking capstone project (KLTN) eligibility and required prerequisite credits.
+  when_to_use:
+  - user asks about graduation thesis eligibility
+  - credit requirements for graduation project
+  - advising on specialization track
+  send:
+  - major
+  - current_gpa
+  - earned_credits
+  do_not_send:
+  - student_id
+  - project_drafts
+  - exam_content
+  expected_output:
+  - progress_summary
+  - tentative_study_plan
+  - risk_notes
