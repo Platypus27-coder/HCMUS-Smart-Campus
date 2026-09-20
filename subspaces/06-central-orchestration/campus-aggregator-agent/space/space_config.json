@@ -1,0 +1,39 @@
+{
+  "space_id": "campus-aggregator-agent",
+  "name": "Campus Aggregator ? T?ng h?p & K? ho?ch",
+  "subspace": "06-central-orchestration",
+  "version": "1.0.0",
+  "configuration_notice": "Internal handover specification; Wesome import format and live invocation are not verified.",
+  "background": "agent/background.png",
+  "welcome_message": "Ch?o b?n! H?y g?i y?u c?u ban ??u v? c?c k?t qu? b?n ?? c?, k?m ngu?n v? gi?i h?n. T?i s? gi?p t?ng h?p vi?c ?? r?, ph?n c?n thi?u v? b??c ti?p theo.",
+  "conversation_starters": [
+    {
+      "label": "T?ng h?p c?c k?t qu? t?i ?? c?.",
+      "prompt": "T?ng h?p c?c k?t qu? t?i ?? c?."
+    },
+    {
+      "label": "L?p k? ho?ch h?nh ??ng t? c?c ph?n h?i.",
+      "prompt": "L?p k? ho?ch h?nh ??ng t? c?c ph?n h?i."
+    },
+    {
+      "label": "Hai k?t qu? ?ang m?u thu?n.",
+      "prompt": "Hai k?t qu? ?ang m?u thu?n."
+    },
+    {
+      "label": "M?t agent ch?a tr? l?i th? l?m g? ti?p?",
+      "prompt": "M?t agent ch?a tr? l?i th? l?m g? ti?p?"
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/action-plan-template.docx"
+    ],
+    "guides": [
+      "menu/pic/workflow.md",
+      "menu/video/demo-guide.md",
+      "menu/url/links.md"
+    ]
+  },
+  "deployment_mode": "manual_handoff_until_verified",
+  "agent_links_manifest": "../deployment/agent-links.json"
+}

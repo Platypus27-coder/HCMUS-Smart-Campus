@@ -1,0 +1,90 @@
+{
+  "notice": "Deployment checklist only; null URLs are not configured. Do not publish placeholder links.",
+  "agents": [
+    {
+      "id": "schedule-deadline-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "gpa-academic-standing-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "academic-advisor-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "scholarship-matching-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "library-research-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "clubs-activities-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "administrative-procedure-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "regulation-qa-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "department-contact-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "general-education-tutor-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "political-theory-tutor-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "core-foundations-tutor-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "specialized-major-tutor-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "student-wellbeing-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "soft-skills-coach-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "campus-router-agent",
+      "url": null,
+      "verified_on": null
+    },
+    {
+      "id": "campus-aggregator-agent",
+      "url": null,
+      "verified_on": null
+    }
+  ]
+}

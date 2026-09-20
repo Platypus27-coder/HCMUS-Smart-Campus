@@ -1,0 +1,39 @@
+{
+  "space_id": "campus-router-agent",
+  "name": "Campus Router ? ?i?u h??ng d?ch v?",
+  "subspace": "06-central-orchestration",
+  "version": "1.0.0",
+  "configuration_notice": "Internal handover specification; Wesome import format and live invocation are not verified.",
+  "background": "agent/background.png",
+  "welcome_message": "Ch?o b?n! B?n c?n h? tr? vi?c g? trong h?c t?p ho?c ??i s?ng sinh vi?n? T?i s? gi?p x?c ??nh agent ph? h?p v? b??c ti?p theo.",
+  "conversation_starters": [
+    {
+      "label": "T?i mu?n t?nh GPA.",
+      "prompt": "T?i mu?n t?nh GPA."
+    },
+    {
+      "label": "T?i mu?n t?m h?c b?ng ph? h?p.",
+      "prompt": "T?i mu?n t?m h?c b?ng ph? h?p."
+    },
+    {
+      "label": "K? sau n?n h?c m?n n?o?",
+      "prompt": "K? sau n?n h?c m?n n?o?"
+    },
+    {
+      "label": "T?i c?n h? tr? m?t m?n h?c.",
+      "prompt": "T?i c?n h? tr? m?t m?n h?c."
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/handoff-guide.docx"
+    ],
+    "guides": [
+      "menu/pic/workflow.md",
+      "menu/video/demo-guide.md",
+      "menu/url/links.md"
+    ]
+  },
+  "deployment_mode": "manual_handoff_until_verified",
+  "agent_links_manifest": "../deployment/agent-links.json"
+}

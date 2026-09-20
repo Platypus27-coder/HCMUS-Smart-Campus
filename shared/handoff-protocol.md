@@ -5,7 +5,7 @@
 
 ## Purpose
 
-This protocol lets a future orchestration runtime exchange structured work between agents without giving every specialist global knowledge of the 16-agent system. The authoritative relationship graph is [`agent-relationships.yaml`](agent-relationships.yaml). A specialist consults only its generated `agent/related-agents.yaml`; the Router and Aggregator may consult the global directory and graph.
+This protocol lets a future orchestration runtime exchange structured work between agents without giving every specialist global knowledge of the 17-agent system (15 specialists, Router, and Aggregator). The authoritative relationship graph is [`agent-relationships.yaml`](agent-relationships.yaml). A specialist consults only its generated `agent/related-agents.yaml`; the Router and Aggregator may consult the global directory and graph.
 
 Routing is a separate concern: `routing-rules.yaml` generates candidates, `routing-score-criteria.yaml` evaluates the baseline deterministic heuristic, and hard rules always run before scoring. A score never overrides a safety or architecture rule.
 
@@ -83,8 +83,6 @@ success | partial | needs_user_input | unsupported | error
   "reason": "Need GPA projection for scholarship eligibility",
   "user_request": "Original or minimally rewritten user request",
   "context": {
-    "academic_year": 2,
-    "major": "Information Technology",
     "current_gpa": 3.25,
     "earned_credits": 65
   },

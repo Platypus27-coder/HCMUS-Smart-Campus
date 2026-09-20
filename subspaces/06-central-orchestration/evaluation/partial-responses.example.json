@@ -1,0 +1,11 @@
+{
+  "demo_notice": "EXAMPLE ONLY — synthetic responses, not live agent execution or real student data",
+  "user_request": "Mô phỏng GPA, kiểm tra học bổng và lập kế hoạch học kỳ tới.",
+  "routing_plan": {"notice": "Human-readable demo task plan; not a scored routing-contract result", "tasks": ["gpa-academic-standing-agent", "scholarship-matching-agent", "academic-advisor-agent"]},
+  "specialist_responses": [
+    {"response_version":"1.0","agent":"gpa-academic-standing-agent","status":"success","result":{"projected_gpa":3.35},"sources":[],"assumptions":["Synthetic example: (3.25 × 60 + 3.75 × 15) / 75 = 3.35, scale 4, no repeat-course adjustments."],"missing_information":[],"limitations":["Illustrative arithmetic only; no SIS access or official transcript verification."]},
+    {"response_version":"1.0","agent":"scholarship-matching-agent","status":"needs_user_input","result":{},"sources":[],"assumptions":[],"missing_information":["training_score", "verified scholarship criteria"],"limitations":["No eligibility decision can be made."]},
+    {"response_version":"1.0","agent":"academic-advisor-agent","status":"error","result":{},"sources":[],"assumptions":[],"missing_information":[],"limitations":["Demo failure; no study plan produced. Retry or transfer manually."]}
+  ],
+  "expected_behavior": ["Preserve the illustrative GPA and its assumptions", "Do not conclude scholarship eligibility", "State that no study plan was received", "List missing inputs and retry step", "Do not invent a deadline"]
+}
