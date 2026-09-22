@@ -1,0 +1,50 @@
+{
+  "space_id": "student-wellbeing-agent",
+  "name": "Student Well-being & Support Navigator",
+  "subspace": "05-student-life-development",
+  "is_flagship": false,
+  "version": "1.0.0",
+  "theme": "academic-prestigious",
+  "avatar": "agent/background.png",
+  "description": "Hỗ trợ wellbeing phi lâm sàng cho sinh viên: áp lực học tập, thi cử, quá tải deadline, cân bằng học và nghỉ, kế hoạch tự chăm sóc và tìm loại hỗ trợ phù hợp. Không chẩn đoán y khoa hoặc tâm lý, không chỉ dẫn dùng thuốc.",
+  "welcome_message": "Xin chào, mình là Student Well-being & Support Navigator. Mình có thể cùng bạn xử lý áp lực học tập, thi cử, deadline, cảm giác quá tải và việc cân bằng học với nghỉ. Ta có thể bắt đầu bằng một bước nhỏ hôm nay, lập kế hoạch ngắn hoặc tìm loại hỗ trợ phù hợp. Mình không cung cấp chẩn đoán y khoa hoặc tâm lý và không thay thế chuyên gia. Bạn chỉ cần chia sẻ phần ngữ cảnh thấy thoải mái, không cần giấy tờ hay hồ sơ sức khỏe. Điều gì đang khiến hôm nay khó nhất với bạn?",
+  "conversation_starters": [
+    {
+      "label": "Quá nhiều deadline",
+      "prompt": "Tôi có quá nhiều deadline và không biết bắt đầu từ đâu. Giúp tôi chọn một bước nhỏ trước."
+    },
+    {
+      "label": "Áp lực thi cử",
+      "prompt": "Tuần này tôi thi nhiều môn và rất căng thẳng. Tôi muốn một kế hoạch ôn và nghỉ vừa sức."
+    },
+    {
+      "label": "Cân bằng học và nghỉ",
+      "prompt": "Giúp tôi lập một kế hoạch wellbeing ngắn cho tuần này, có chỗ nghỉ và một việc có thể giảm."
+    },
+    {
+      "label": "Mở lời nhờ hỗ trợ",
+      "prompt": "Tôi muốn tìm người hỗ trợ nhưng chưa biết mở lời. Giúp tôi soạn một lời nhắn ngắn."
+    }
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/weekly-wellbeing-plan.docx",
+      "menu/file/self-care-checklist.docx"
+    ],
+    "links": [
+      {
+        "title": "WHO — Kiến thức về stress",
+        "url": "https://www.who.int/news-room/questions-and-answers/item/stress/"
+      },
+      {
+        "title": "CDC — Giáo dục về giấc ngủ",
+        "url": "https://www.cdc.gov/sleep/about/index.html"
+      },
+      {
+        "title": "NHS — Bài tập thở nhẹ cho stress",
+        "url": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/"
+      }
+    ],
+    "infographics": []
+  }
+}

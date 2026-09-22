@@ -4,6 +4,27 @@
 # Update the canonical relationship graph and regenerate instead.
 current_agent: soft-skills-coach-agent
 related_agents:
+- agent: student-wellbeing-agent
+  relationship: refers_to
+  reason: A user may prefer wellbeing and recovery support before continuing skill practice.
+  when_to_use:
+  - user requests non-clinical overload support
+  - user chooses to pause skill practice for wellbeing support
+  send:
+  - wellbeing_goal
+  - situation_summary
+  - preferred_support_style
+  do_not_send:
+  - health_details
+  - student_id
+  - medical_records
+  - sensitive_personal_information
+  - unrelated_personal_data
+  - raw_conversation
+  expected_output:
+  - supportive_guidance
+  - suggested_next_steps
+  - safety_notice
 - agent: clubs-activities-agent
   relationship: supports
   reason: A user may want activity opportunities to practice a targeted skill.

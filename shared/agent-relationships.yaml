@@ -166,15 +166,59 @@ relationships:
       expected_output: [progress_summary, tentative_study_plan, risk_notes]
 
   student-wellbeing-agent:
+    # These are optional, user-approved sequential referrals, not automatic
+    # multi-intent execution. Keep health details out of every free-text field.
+    - target: soft-skills-coach-agent
+      relationship: refers_to
+      reason: "After wellbeing support, the user may choose a separate skill-practice goal."
+      triggers: ["user requests time-management practice", "user wants presentation or communication practice", "user chooses skill coaching after overload support"]
+      send: [skill_goal, practice_context, career_interests]
+      do_not_send: [health_details, student_id, medical_records, sensitive_personal_information, unrelated_personal_data, raw_conversation]
+      expected_output: [practice_plan, feedback_framework, next_steps]
+    - target: gpa-academic-standing-agent
+      relationship: refers_to
+      reason: "Grade-related stress may include a separate request to calculate or project user-provided GPA data."
+      triggers: ["user requests GPA calculation", "user requests GPA projection while discussing academic stress"]
+      send: [current_gpa, earned_credits, course_grades, planned_courses, expected_grades]
+      do_not_send: [health_details, student_id, full_transcript, medical_records, sensitive_personal_information, unrelated_personal_data, raw_conversation]
+      expected_output: [calculated_gpa, projected_gpa, academic_status]
+    - target: academic-advisor-agent
+      relationship: refers_to
+      reason: "A user seeking reduced academic workload may need a tentative study plan based on verified programme information."
+      triggers: ["user wants to review next semester workload", "user requests academic planning after overload support"]
+      send: [major, academic_year, completed_courses, planned_courses, learning_goals]
+      do_not_send: [health_details, student_id, full_transcript, medical_records, sensitive_personal_information, unrelated_personal_data, raw_conversation]
+      expected_output: [progress_summary, tentative_study_plan, risk_notes]
+    - target: schedule-deadline-agent
+      relationship: refers_to
+      reason: "Uncertainty about public schedules or deadlines may require separate source verification."
+      triggers: ["user requests verified public examination dates", "user requests public deadline lookup"]
+      send: [request_topic, academic_year, campus, date_range]
+      do_not_send: [health_details, student_id, private_calendar_data, medical_records, sensitive_personal_information, unrelated_personal_data, raw_conversation]
+      expected_output: [schedule_guidance, deadline_checklist, verification_recommendation]
     - target: department-contact-agent
       relationship: refers_to
       reason: "When the user asks for an institutional support channel, verified contact guidance is needed."
       triggers: ["user requests a university support contact", "a responsible unit needs identification", "contact information must be verified"]
       send: [request_topic, preferred_contact_channel]
-      do_not_send: [health_details, student_id, sensitive_personal_information]
+      do_not_send: [health_details, student_id, sensitive_personal_information, medical_records, unrelated_personal_data, raw_conversation]
       expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+    - target: clubs-activities-agent
+      relationship: refers_to
+      reason: "A user may voluntarily seek low-pressure social activities after discussing wellbeing needs."
+      triggers: ["user explicitly requests club or activity discovery", "user chooses social practice opportunities without adding unwanted workload"]
+      send: [club_interests, availability, activity_goals]
+      do_not_send: [health_details, student_id, medical_records, sensitive_personal_information, unrelated_personal_data, raw_conversation]
+      expected_output: [activity_recommendations, participation_guidance, verification_recommendation]
 
   soft-skills-coach-agent:
+    - target: student-wellbeing-agent
+      relationship: refers_to
+      reason: "A user may prefer wellbeing and recovery support before continuing skill practice."
+      triggers: ["user requests non-clinical overload support", "user chooses to pause skill practice for wellbeing support"]
+      send: [wellbeing_goal, situation_summary, preferred_support_style]
+      do_not_send: [health_details, student_id, medical_records, sensitive_personal_information, unrelated_personal_data, raw_conversation]
+      expected_output: [supportive_guidance, suggested_next_steps, safety_notice]
     - target: clubs-activities-agent
       relationship: supports
       reason: "A user may want activity opportunities to practice a targeted skill."

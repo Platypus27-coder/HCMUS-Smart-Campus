@@ -4,6 +4,99 @@
 # Update the canonical relationship graph and regenerate instead.
 current_agent: student-wellbeing-agent
 related_agents:
+- agent: soft-skills-coach-agent
+  relationship: refers_to
+  reason: After wellbeing support, the user may choose a separate skill-practice goal.
+  when_to_use:
+  - user requests time-management practice
+  - user wants presentation or communication practice
+  - user chooses skill coaching after overload support
+  send:
+  - skill_goal
+  - practice_context
+  - career_interests
+  do_not_send:
+  - health_details
+  - student_id
+  - medical_records
+  - sensitive_personal_information
+  - unrelated_personal_data
+  - raw_conversation
+  expected_output:
+  - practice_plan
+  - feedback_framework
+  - next_steps
+- agent: gpa-academic-standing-agent
+  relationship: refers_to
+  reason: Grade-related stress may include a separate request to calculate or project user-provided GPA data.
+  when_to_use:
+  - user requests GPA calculation
+  - user requests GPA projection while discussing academic stress
+  send:
+  - current_gpa
+  - earned_credits
+  - course_grades
+  - planned_courses
+  - expected_grades
+  do_not_send:
+  - health_details
+  - student_id
+  - full_transcript
+  - medical_records
+  - sensitive_personal_information
+  - unrelated_personal_data
+  - raw_conversation
+  expected_output:
+  - calculated_gpa
+  - projected_gpa
+  - academic_status
+- agent: academic-advisor-agent
+  relationship: refers_to
+  reason: A user seeking reduced academic workload may need a tentative study plan based on verified programme information.
+  when_to_use:
+  - user wants to review next semester workload
+  - user requests academic planning after overload support
+  send:
+  - major
+  - academic_year
+  - completed_courses
+  - planned_courses
+  - learning_goals
+  do_not_send:
+  - health_details
+  - student_id
+  - full_transcript
+  - medical_records
+  - sensitive_personal_information
+  - unrelated_personal_data
+  - raw_conversation
+  expected_output:
+  - progress_summary
+  - tentative_study_plan
+  - risk_notes
+- agent: schedule-deadline-agent
+  relationship: refers_to
+  reason: Uncertainty about public schedules or deadlines may require separate source verification.
+  when_to_use:
+  - user requests verified public examination dates
+  - user requests public deadline lookup
+  send:
+  - request_topic
+  - academic_year
+  - campus
+  - date_range
+  do_not_send:
+  - health_details
+  - student_id
+  - private_calendar_data
+  - medical_records
+  - sensitive_personal_information
+  - unrelated_personal_data
+  - raw_conversation
+  expected_output:
+  - schedule_guidance
+  - deadline_checklist
+  - verification_recommendation
 - agent: department-contact-agent
   relationship: refers_to
   reason: When the user asks for an institutional support channel, verified contact guidance is needed.
@@ -18,7 +111,31 @@ related_agents:
   - health_details
   - student_id
   - sensitive_personal_information
+  - medical_records
+  - unrelated_personal_data
+  - raw_conversation
   expected_output:
   - responsible_unit_guidance
   - contact_guidance
   - follow_up_steps
+- agent: clubs-activities-agent
+  relationship: refers_to
+  reason: A user may voluntarily seek low-pressure social activities after discussing wellbeing needs.
+  when_to_use:
+  - user explicitly requests club or activity discovery
+  - user chooses social practice opportunities without adding unwanted workload
+  send:
+  - club_interests
+  - availability
+  - activity_goals
+  do_not_send:
+  - health_details
+  - student_id
+  - medical_records
+  - sensitive_personal_information
+  - unrelated_personal_data
+  - raw_conversation
+  expected_output:
+  - activity_recommendations
+  - participation_guidance
+  - verification_recommendation
