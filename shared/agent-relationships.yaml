@@ -226,6 +226,48 @@ relationships:
       send: [skill_goal, club_interests, career_interests, availability]
       do_not_send: [student_id, unrelated_personal_data, sensitive_personal_information]
       expected_output: [activity_recommendations, participation_guidance, verification_recommendation]
+    - target: library-research-agent
+      relationship: refers_to
+      reason: "A research presentation exercise may require a separate academic source-search strategy."
+      triggers: ["user asks to find papers for a presentation", "research topic needs source discovery"]
+      send: [research_topic, keywords, preferred_databases]
+      do_not_send: [student_id, private_library_credentials, unrelated_personal_data]
+      expected_output: [search_strategy, suggested_keywords, resource_guidance]
+    - target: scholarship-matching-agent
+      relationship: refers_to
+      reason: "Scholarship eligibility and current opportunities require verified specialist knowledge; the coach only practices interviews and self-presentation."
+      triggers: ["user asks which scholarships are open", "scholarship eligibility must be checked"]
+      send: [major, academic_year, eligibility_context]
+      do_not_send: [student_id, financial_records, unrelated_personal_data]
+      expected_output: [match_summary, missing_requirements, next_actions]
+    - target: gpa-academic-standing-agent
+      relationship: refers_to
+      reason: "GPA calculation from user-provided data is distinct from practicing how to explain an academic result."
+      triggers: ["user asks for a GPA calculation", "user asks to simulate grades before practicing an explanation"]
+      send: [current_gpa, earned_credits, course_grades]
+      do_not_send: [student_id, full_transcript, unrelated_personal_data]
+      expected_output: [calculated_gpa, projected_gpa, academic_status]
+    - target: academic-advisor-agent
+      relationship: refers_to
+      reason: "Course and semester planning needs academic advising before the coach helps a student communicate a decision."
+      triggers: ["user asks which courses to choose", "student wants a semester plan before discussing it with others"]
+      send: [major, academic_year, learning_goals]
+      do_not_send: [student_id, full_transcript, unrelated_personal_data]
+      expected_output: [progress_summary, tentative_study_plan, risk_notes]
+    - target: schedule-deadline-agent
+      relationship: refers_to
+      reason: "Public dates and deadlines must be verified separately from coaching an announcement or time plan."
+      triggers: ["user asks for an official deadline", "a class announcement depends on a public date"]
+      send: [request_topic, academic_year, date_range]
+      do_not_send: [student_id, private_calendar_data, unrelated_personal_data]
+      expected_output: [schedule_guidance, deadline_checklist, verification_recommendation]
+    - target: regulation-qa-agent
+      relationship: refers_to
+      reason: "Applicable rules require verified interpretation; the coach only supports communication or decision practice."
+      triggers: ["student representation question depends on a rule", "club activity question asks for an applicable regulation"]
+      send: [question, regulation_topic, situation_summary]
+      do_not_send: [student_id, sensitive_personal_information, unrelated_personal_data]
+      expected_output: [regulation_guidance, source_requirements, verification_recommendation]
 
   campus-router-agent:
     - target: schedule-deadline-agent

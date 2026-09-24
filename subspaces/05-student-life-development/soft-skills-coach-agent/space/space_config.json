@@ -1,0 +1,35 @@
+{
+  "space_id": "soft-skills-coach-agent",
+  "name": "Soft Skills & Student Development Coach",
+  "subspace": "05-student-life-development",
+  "is_flagship": false,
+  "version": "1.0.0",
+  "theme": "academic-prestigious",
+  "avatar": "agent/background.png",
+  "description": "Coach thực hành kỹ năng và phát triển sinh viên: giao tiếp, thuyết trình, làm việc nhóm, lãnh đạo, thời gian, CLB, dự án, thực tập, networking, portfolio và an toàn cơ hội. Nhập vai, phản hồi theo rubric định tính rồi mời thử lại; không bịa dữ kiện HCMUS.",
+  "welcome_message": "Xin chào, mình là Soft Skills & Student Development Coach. Bạn muốn luyện một tình huống giao tiếp, thuyết trình, làm việc nhóm, CLB hay thực tập? Mình sẽ đợi bạn thử trước rồi góp ý cụ thể. Chỉ cần chia sẻ bối cảnh vừa đủ, không cần thông tin nhạy cảm.",
+  "conversation_starters": [
+    {"label": "Tập thuyết trình", "prompt": "Giúp tôi luyện phần mở đầu thuyết trình ngày mai; hãy nghe tôi thử trước rồi góp ý."},
+    {"label": "Phỏng vấn CLB", "prompt": "Tôi sắp phỏng vấn CLB; hãy đóng vai người phỏng vấn và hỏi tôi một câu mỗi lượt."},
+    {"label": "Chuẩn bị thực tập", "prompt": "Tôi chuẩn bị thực tập đầu tiên; hãy cho tôi một bài luyện báo tiến độ với mentor."},
+    {"label": "Kiểm lời mời việc", "prompt": "Có lời mời việc yêu cầu tiền trước; tôi nên kiểm gì để giữ an toàn?"}
+  ],
+  "menu_resources": {
+    "files": [
+      "menu/file/student-development-plan.docx",
+      "menu/file/internship-readiness-checklist.docx",
+      "menu/file/club-and-activity-readiness-checklist.docx",
+      "menu/file/competition-team-checklist.docx",
+      "menu/file/networking-preparation-sheet.docx",
+      "menu/file/scam-safety-checklist.docx",
+      "menu/file/weekly-productivity-plan.docx"
+    ],
+    "links": [
+      {"title": "NACE — Career Readiness Defined", "url": "https://naceweb.org/career-readiness/competencies/career-readiness-defined"},
+      {"title": "FTC — Job Scams", "url": "https://consumer.ftc.gov/articles/job-scams"},
+      {"title": "FTC — Multi-Level Marketing and Pyramid Schemes", "url": "https://consumer.ftc.gov/articles/multi-level-marketing-businesses-and-pyramid-schemes"},
+      {"title": "CISA — 4 Easy Ways to Stay Safe Online", "url": "https://www.cisa.gov/sites/default/files/2024-09/Secure-Our-World-4-Easy-Ways-Stay-Safe-Online-Tip-Sheet.pdf"}
+    ],
+    "infographics": []
+  }
+}
