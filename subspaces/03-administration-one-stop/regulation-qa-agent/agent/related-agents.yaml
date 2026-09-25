@@ -24,3 +24,22 @@ related_agents:
   - procedure_guidance
   - document_checklist
   - next_actions
+- agent: department-contact-agent
+  relationship: refers_to
+  reason: Official resolution or dispute of a regulation requires direct contact with the responsible department.
+  when_to_use:
+  - user asks where the department is located
+  - contact details for legal or exam board needed
+  - official appeal appointment requested
+  send:
+  - request_topic
+  - campus
+  - preferred_contact_channel
+  do_not_send:
+  - student_id
+  - sensitive_personal_information
+  - unrelated_personal_data
+  expected_output:
+  - responsible_unit_guidance
+  - contact_guidance
+  - follow_up_steps

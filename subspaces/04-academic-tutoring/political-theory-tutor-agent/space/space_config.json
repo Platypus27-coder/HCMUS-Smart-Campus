@@ -1,47 +1,10 @@
 {
-  "space_id": "political-theory-tutor-agent",
-  "name": "Political Theory Tutor Hub (Trợ giảng Lý luận Chính trị)",
+  "name": "Political Theory Tutor Agent",
   "subspace": "04-academic-tutoring",
-  "is_flagship": false,
-  "version": "1.0.0",
-  "theme": "academic-theory",
-  "avatar": "agent/background.png",
-  "description": "Trợ giảng chuyên sâu khối kiến thức Lý luận Chính trị (Triết học Mác - Lênin, Kinh tế chính trị Mác - Lênin, Chủ nghĩa xã hội khoa học, Tư tưởng Hồ Chí Minh, Lịch sử Đảng Cộng sản Việt Nam) cho sinh viên Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
-  "welcome_message": "Chào bạn! Tôi là **Political Theory Tutor Agent** – Trợ giảng học tập khối kiến thức Lý luận Chính trị tại HCMUS Smart Campus. 📕⭐\n\nTôi ở đây để giúp bạn hiểu sâu sắc bản chất, hệ thống hóa kiến thức và tự tin đạt điểm cao trong 5 môn Lý luận Chính trị bắt buộc:\n• 🏛️ **Triết học Mác - Lênin:** Bản thể luận, phép biện chứng duy vật, nhận thức luận, chủ nghĩa duy vật lịch sử.\n• 💰 **Kinh tế chính trị Mác - Lênin:** Hàng hóa, tiền tệ, quy luật giá trị thặng dư, tích lũy tư bản và kinh tế thị trường định hướng XHCN.\n• 🤝 **Chủ nghĩa xã hội khoa học:** Sứ mệnh lịch sử giai cấp công nhân, liên minh giai cấp, vấn đề dân tộc, tôn giáo và gia đình.\n• 🌟 **Tư tưởng Hồ Chí Minh & Lịch sử Đảng:** Quá trình hình thành tư tưởng, đường lối cách mạng giải phóng dân tộc và công cuộc Đổi mới.\n• 🧠 **Sơ đồ tư duy & Đề cương ôn tập:** Hỗ trợ hệ thống hóa câu hỏi ôn tập theo đề cương chuẩn của Bộ Giáo dục & Đào tạo.\n\nHôm nay bạn cần trợ giúp môn Lý luận Chính trị nào?",
-  "conversation_starters": [
-    {
-      "label": "🏛️ Quy luật Phủ định của phủ định",
-      "prompt": "Giải thích nội dung quy luật Phủ định của phủ định trong Triết học Mác - Lênin và cho ví dụ thực tế minh họa?"
-    },
-    {
-      "label": "💰 Bản chất của Giá trị thặng dư",
-      "prompt": "Bản chất của giá trị thặng dư (m) trong môn Kinh tế chính trị là gì? Phân biệt giá trị thặng dư tuyệt đối và tương đối?"
-    },
-    {
-      "label": "🌟 Ý nghĩa Tư tưởng Hồ Chí Minh",
-      "prompt": "Tóm tắt các giai đoạn hình thành và phát triển Tư tưởng Hồ Chí Minh phục vụ ôn thi cuối kỳ?"
-    },
-    {
-      "label": "📚 Tìm giáo trình chính thức tại Thư viện",
-      "prompt": "Giáo trình chuẩn của Bộ GD&ĐT cho các môn Lý luận Chính trị có thể tra cứu hoặc mượn ở Thư viện HCMUS thế nào?"
-    }
-  ],
+  "background": "agent/background.png",
   "menu_resources": {
-    "files": [],
-    "links": [
-      {
-        "title": "Bộ Giáo dục và Đào tạo (Giáo trình Chính trị)",
-        "url": "https://moet.gov.vn"
-      },
-      {
-        "title": "Thư viện Trung tâm ĐHQG-HCM",
-        "url": "https://vnulib.edu.vn"
-      },
-      {
-        "title": "Thư viện HCMUS",
-        "url": "http://www.lib.hcmus.edu.vn"
-      }
-    ],
-    "infographics": []
-  }
+    "files": ["menu/file/Cam_Nang_Phoi_Hop_Va_Dieu_Huong_He_Sinh_Thai_Agent_Subspace_4.docx"],
+    "guides": ["menu/video/video_resources.md"]
+  },
+  "default_qa_enabled": true
 }

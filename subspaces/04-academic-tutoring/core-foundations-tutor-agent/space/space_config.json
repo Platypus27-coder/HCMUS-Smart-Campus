@@ -1,47 +1,10 @@
 {
-  "space_id": "core-foundations-tutor-agent",
-  "name": "Core Foundations Tutor Hub (Trợ giảng Cơ sở ngành)",
+  "name": "Core Foundations Tutor Agent",
   "subspace": "04-academic-tutoring",
-  "is_flagship": false,
-  "version": "1.0.0",
-  "theme": "academic-technology",
-  "avatar": "agent/background.png",
-  "description": "Trợ giảng chuyên sâu khối kiến thức Cơ sở ngành (Nhập môn lập trình, Kỹ thuật lập trình, Cấu trúc dữ liệu & giải thuật, Cơ sở dữ liệu, Kiến trúc máy tính, Hệ điều hành, Mạng máy tính cơ bản, Toán rời rạc) cho sinh viên Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
-  "welcome_message": "Chào bạn! Tôi là **Core Foundations Tutor Agent** – Trợ giảng học tập khối kiến thức Cơ sở ngành tại HCMUS Smart Campus. 💻⚙️\n\nTôi ở đây để giúp bạn xây dựng nền móng kỹ thuật vững chắc, vượt qua các môn lập trình và cốt lõi ngành:\n• ⌨️ **Kỹ năng Lập trình (C/C++, Java, Python):** Con trỏ, cấp phát động, đệ quy, lập trình hướng đối tượng (OOP).\n• 🌲 **Cấu trúc Dữ liệu & Giải thuật (DSA):** Danh sách liên kết, Cây nhị phân, Đồ thị, Hash Table; thuật toán sắp xếp, tìm kiếm, quy hoạch động, DFS/BFS.\n• 🗄️ **Hệ cơ sở dữ liệu:** Đại số quan hệ, thiết kế ERD, chuẩn hóa dữ liệu (1NF, 2NF, 3NF, BCNF) và truy vấn SQL tối ưu.\n• 🖥️ **Hệ thống máy tính:** Kiến trúc tập lệnh MIPS, phân cấp bộ nhớ Cache, tiến trình (Process), luồng (Thread), Deadlock trong Hệ điều hành.\n• 🤝 **Kết nối liên tác tử:** Tự động tóm tắt bài tập & thắc mắc kỹ thuật của bạn để kết nối Thư viện tra cứu sách chuyên khảo hoặc Cố vấn môn tiên quyết.\n\nHôm nay bạn cần gỡ rối khái niệm hay bài tập cơ sở ngành nào?",
-  "conversation_starters": [
-    {
-      "label": "🌲 Cân bằng cây AVL & Đỏ - Đen",
-      "prompt": "Giải thích các trường hợp xoay (LL, RR, LR, RL) để tái cân bằng Cây AVL trong môn Cấu trúc Dữ liệu & Giải thuật?"
-    },
-    {
-      "label": "🗄️ Chuẩn hóa CSDL đạt chuẩn BCNF",
-      "prompt": "Các bước chuẩn hóa một lược đồ quan hệ từ 1NF lên 2NF, 3NF và BCNF dựa trên tập phụ thuộc hàm?"
-    },
-    {
-      "label": "⌨️ Quản lý bộ nhớ con trỏ trong C++",
-      "prompt": "Giải thích lỗi Memory Leak và Dangling Pointer trong C++ và cách phòng tránh bằng con trỏ thông minh (Smart Pointers)?"
-    },
-    {
-      "label": "📚 Tìm tài liệu tham khảo DSA chuẩn",
-      "prompt": "Em muốn tìm sách tham khảo kinh điển về Giải thuật (như CLRS) và CSDL ở thư viện trường thì cần tìm từ khóa nào?"
-    }
-  ],
+  "background": "agent/background.png",
   "menu_resources": {
-    "files": [],
-    "links": [
-      {
-        "title": "Khoa Công nghệ Thông tin HCMUS",
-        "url": "https://www.fit.hcmus.edu.vn"
-      },
-      {
-        "title": "Hệ thống nộp bài tự động (FIT HCMUS Wecode)",
-        "url": "https://wecode.fit.hcmus.edu.vn"
-      },
-      {
-        "title": "Thư viện HCMUS",
-        "url": "http://www.lib.hcmus.edu.vn"
-      }
-    ],
-    "infographics": []
-  }
+    "files": ["menu/file/Cam_Nang_Phoi_Hop_Va_Dieu_Huong_He_Sinh_Thai_Agent_Subspace_4.docx"],
+    "guides": ["menu/video/video_resources.md"]
+  },
+  "default_qa_enabled": true
 }

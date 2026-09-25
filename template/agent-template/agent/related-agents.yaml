@@ -1,0 +1,13 @@
+agent_id: sample-template-agent
+name: Sample Template Agent
+subspace: 01-academic-training
+role: Chuyên viên Hỗ trợ Nghiệp vụ Mẫu
+related_agents:
+  - agent_id: campus-router-agent
+    relationship: routed_by
+    intent_triggers:
+      - 'mẫu thủ tục'
+      - 'hướng dẫn mẫu'
+  - agent_id: campus-aggregator-agent
+    relationship: aggregated_to
+    output_type: structured_action_plan

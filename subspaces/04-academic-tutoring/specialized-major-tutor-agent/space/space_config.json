@@ -1,47 +1,10 @@
 {
-  "space_id": "specialized-major-tutor-agent",
-  "name": "Specialized Major Tutor Hub (Trợ giảng Chuyên ngành)",
+  "name": "Specialized Major Tutor Agent",
   "subspace": "04-academic-tutoring",
-  "is_flagship": false,
-  "version": "1.0.0",
-  "theme": "academic-advanced",
-  "avatar": "agent/background.png",
-  "description": "Trợ giảng chuyên sâu các hướng chuyên ngành (Trí tuệ nhân tạo, Khoa học dữ liệu, Kỹ thuật phần mềm, An toàn thông tin, Hệ thống thông tin, Mạng máy tính & Viễn thông) cho sinh viên Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM.",
-  "welcome_message": "Chào bạn! Tôi là **Specialized Major Tutor Agent** – Trợ giảng học tập khối kiến thức Chuyên ngành tại HCMUS Smart Campus. 🚀🌐\n\nTôi ở đây để hỗ trợ bạn chinh phục các môn chuyên ngành năm 3, năm 4 và định hình đề tài đồ án/khóa luận:\n• 🤖 **Trí tuệ Nhân tạo & Khoa học Dữ liệu (AI & DS):** Machine Learning, Deep Learning (CNN, RNN, Transformer), Thị giác máy tính (CV), Xử lý ngôn ngữ tự nhiên (NLP), Data Mining.\n• 🏗️ **Kỹ thuật Phần mềm (SE):** Kiến trúc phần mềm (Clean Architecture, Microservices), Quy trình Agile/Scrum, CI/CD, Design Patterns nâng cao.\n• 🛡️ **An toàn Thông tin (Security):** Mật mã học (RSA, AES, ECC), Kiểm thử xâm nhập (Penetration Testing), Phân tích mã độc, Bảo mật web.\n• 🌐 **Mạng Máy tính & HTTT:** Lập trình mạng Socket, Cloud Computing (AWS/GCP/Docker/K8s), Phân tích thiết kế HTTT doanh nghiệp (ERP, CRM).\n• 🤝 **Đồng hành Đa tác tử:** Tóm tắt hướng nghiên cứu/công nghệ bạn quan tâm để kết nối Thư viện tra cứu bài báo IEEE/ACM hoặc Cố vấn học vụ về điều kiện làm Khóa luận tốt nghiệp (KLTN).\n\nHôm nay bạn cần trợ giúp môn chuyên ngành hay công nghệ nào?",
-  "conversation_starters": [
-    {
-      "label": "🤖 Cơ chế Attention & Transformer trong NLP",
-      "prompt": "Giải thích chi tiết cơ chế Self-Attention và Multi-Head Attention trong kiến trúc Transformer?"
-    },
-    {
-      "label": "🏗️ Thiết kế Kiến trúc Microservices",
-      "prompt": "Các mẫu thiết kế (Design Patterns) phổ biến khi triển khai hệ thống Microservices và cách xử lý Distributed Transaction (Saga Pattern)?"
-    },
-    {
-      "label": "🛡️ Nguyên lý Mật mã bất đối xứng RSA",
-      "prompt": "Giải thích cơ chế tạo khóa, mã hóa và giải mã của thuật toán RSA dựa trên định lý Euler?"
-    },
-    {
-      "label": "📚 Tìm bài báo khoa học IEEE / ACM",
-      "prompt": "Hướng dẫn em cách kết nối Thư viện HCMUS để tải các bài báo nghiên cứu chuẩn IEEE Xplore và ScienceDirect về đề tài này?"
-    }
-  ],
+  "background": "agent/background.png",
   "menu_resources": {
-    "files": [],
-    "links": [
-      {
-        "title": "Khoa Công nghệ Thông tin HCMUS",
-        "url": "https://www.fit.hcmus.edu.vn"
-      },
-      {
-        "title": "IEEE Xplore Digital Library",
-        "url": "https://ieeexplore.ieee.org"
-      },
-      {
-        "title": "Thư viện HCMUS (Cơ sở dữ liệu điện tử)",
-        "url": "http://www.lib.hcmus.edu.vn"
-      }
-    ],
-    "infographics": []
-  }
+    "files": ["menu/file/Cam_Nang_Phoi_Hop_Va_Dieu_Huong_He_Sinh_Thai_Agent_Subspace_4.docx"],
+    "guides": ["menu/video/video_resources.md"]
+  },
+  "default_qa_enabled": true
 }

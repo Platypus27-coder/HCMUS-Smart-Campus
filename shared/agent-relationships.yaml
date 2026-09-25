@@ -84,6 +84,30 @@ relationships:
       send: [procedure_type, purpose, deadline_context, available_documents]
       do_not_send: [student_id, full_case_history, unrelated_personal_data]
       expected_output: [procedure_guidance, document_checklist, next_actions]
+    - target: department-contact-agent
+      relationship: refers_to
+      reason: "Official resolution or dispute of a regulation requires direct contact with the responsible department."
+      triggers: ["user asks where the department is located", "contact details for legal or exam board needed", "official appeal appointment requested"]
+      send: [request_topic, campus, preferred_contact_channel]
+      do_not_send: [student_id, sensitive_personal_information, unrelated_personal_data]
+      expected_output: [responsible_unit_guidance, contact_guidance, follow_up_steps]
+
+  department-contact-agent:
+    - target: administrative-procedure-agent
+      relationship: refers_to
+      reason: "Inquiring about department locations or hours often leads to administrative procedure and form requirements."
+      triggers: ["user asks how to submit a form at this office", "document requirements needed", "office visit is for an administrative procedure"]
+      send: [request_topic, campus, procedure_type]
+      do_not_send: [student_id, unrelated_personal_data]
+      expected_output: [procedure_guidance, document_checklist, next_actions]
+    - target: regulation-qa-agent
+      relationship: refers_to
+      reason: "A user contacting the Legal or Inspection department may need verified explanation of school regulations."
+      triggers: ["contact inquiry is about a disciplinary dispute", "user needs academic regulation explanation", "rule interpretation requested"]
+      send: [question, regulation_topic, situation_summary]
+      do_not_send: [student_id, sensitive_personal_information, unrelated_personal_data]
+      expected_output: [regulation_guidance, source_requirements, verification_recommendation]
+
 
   schedule-deadline-agent:
     - target: department-contact-agent

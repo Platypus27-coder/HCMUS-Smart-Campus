@@ -3,4 +3,41 @@
 # Do not manually edit.
 # Update the canonical relationship graph and regenerate instead.
 current_agent: department-contact-agent
-related_agents: []
+related_agents:
+- agent: administrative-procedure-agent
+  relationship: refers_to
+  reason: Inquiring about department locations or hours often leads to administrative procedure and form requirements.
+  when_to_use:
+  - user asks how to submit a form at this office
+  - document requirements needed
+  - office visit is for an administrative procedure
+  send:
+  - request_topic
+  - campus
+  - procedure_type
+  do_not_send:
+  - student_id
+  - unrelated_personal_data
+  expected_output:
+  - procedure_guidance
+  - document_checklist
+  - next_actions
+- agent: regulation-qa-agent
+  relationship: refers_to
+  reason: A user contacting the Legal or Inspection department may need verified explanation of school regulations.
+  when_to_use:
+  - contact inquiry is about a disciplinary dispute
+  - user needs academic regulation explanation
+  - rule interpretation requested
+  send:
+  - question
+  - regulation_topic
+  - situation_summary
+  do_not_send:
+  - student_id
+  - sensitive_personal_information
+  - unrelated_personal_data
+  expected_output:
+  - regulation_guidance
+  - source_requirements
+  - verification_recommendation
